@@ -1,0 +1,11 @@
+
+*.user
+*.vsidx
+*.lock
+.vs/InfaProjekt_2022-2023/v17/.suo
+*.db
+*.sqlite
+*.json
+InfaProjekt_2022-2023.sln
+*.vcxproj
+*.filters
