@@ -5,18 +5,17 @@
 #include <ctime>
 
 // Gra bêdzie w stylu Space Invaders, tworz¹c program inspirujê siê Tyrian 2000
-// G³ównym celem jest przetrwanie naszego statku kosmicznego i zniszczenie jak najwiêkszej iloœæi wrogów
+// G³ównym celem jest przetrwanie naszego statku kosmicznego i zniszczenie jak najwiêkszej iloœci wrogów
 
-int displayMenu;
-const int WINDOW_WIDTH = 1920;
-const int WINDOW_HEIGHT = 1080;
 
-class 
+const int width = 1920;
+const int height = 1080;
+
 
 
 int main()
 {
-    sf::RenderWindow window(sf::VideoMode(WINDOW_WIDTH, WINDOW_HEIGHT), "TYRIAN 2000");
+    sf::RenderWindow window(sf::VideoMode(width, height), "TYRIAN 2000");
 
     while (window.isOpen())
     {
@@ -27,7 +26,10 @@ int main()
                 window.close();
         }
 
-    
+
+        window.clear();
+        //rysowanie gry
+        window.display();
     }
 
     return 0;
