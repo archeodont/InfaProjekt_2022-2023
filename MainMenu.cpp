@@ -55,7 +55,7 @@ void MainMenu::MoveUp()
 
 		MainMenuSelected--;
 		if (MainMenuSelected == -1) {
-			MainMenuSelected = 2;
+			MainMenuSelected = 3;
 		}
 		mainMenu[MainMenuSelected].setFillColor(Color::Blue);
 	}
@@ -63,3 +63,16 @@ void MainMenu::MoveUp()
 
 
 //Funkcja MoveDown
+void MainMenu::MoveDown() {
+	if (MainMenuSelected + 1 <= Max_main_menu)
+	{
+		mainMenu[MainMenuSelected].setFillColor(Color::White);
+		MainMenuSelected++;
+		if (MainMenuSelected == 4)
+		{
+			MainMenuSelected = 0;
+		}
+		mainMenu[MainMenuSelected].setFillColor(Color::Blue);
+	}
+
+}
