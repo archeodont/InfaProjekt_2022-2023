@@ -6,7 +6,7 @@ MainMenu::MainMenu(float width, float height)
 		cout << "Nie wykryto pliku arial";
 
 	mainMenu[0].setFont(font);
-	mainMenu[0].setFillColor(Color::White);
+	mainMenu[0].setFillColor(Color::Blue);
 	mainMenu[0].setString("Nowa Gra");
 	mainMenu[0].setCharacterSize(70);
 	mainMenu[0].setPosition(400, 200);
@@ -29,7 +29,7 @@ MainMenu::MainMenu(float width, float height)
 	mainMenu[3].setCharacterSize(70);
 	mainMenu[3].setPosition(400, 500);
 
-	MainMenuSelected = -1;
+	MainMenuSelected = 0;
 }
 
 
@@ -47,32 +47,32 @@ void MainMenu::draw(RenderWindow& window) {
 }
 
 
-// Funkcja MoveUp
 void MainMenu::MoveUp()
 {
-	if (MainMenuSelected - 1 >= 0) {
-		mainMenu[MainMenuSelected].setFillColor(Color::White);
+	if (MainMenuSelected >= 0 && MainMenuSelected <= 3) {
+		mainMenu[CurrentlySelected].setFillColor(Color::White);  
 
 		MainMenuSelected--;
-		if (MainMenuSelected == -1) {
+		if (MainMenuSelected < 0) {
 			MainMenuSelected = 3;
 		}
-		mainMenu[MainMenuSelected].setFillColor(Color::Blue);
+		CurrentlySelected = MainMenuSelected;  
+		mainMenu[CurrentlySelected].setFillColor(Color::Blue);  
 	}
 }
 
 
-//Funkcja MoveDown
-void MainMenu::MoveDown() {
-	if (MainMenuSelected + 1 <= Max_main_menu)
-	{
-		mainMenu[MainMenuSelected].setFillColor(Color::White);
+
+void MainMenu::MoveDown()
+{
+	if (MainMenuSelected >= 0 && MainMenuSelected <= 3) {
+		mainMenu[CurrentlySelected].setFillColor(Color::White);
+
 		MainMenuSelected++;
-		if (MainMenuSelected == 4)
-		{
+		if (MainMenuSelected == 4) {
 			MainMenuSelected = 0;
 		}
-		mainMenu[MainMenuSelected].setFillColor(Color::Blue);
+		CurrentlySelected = MainMenuSelected;
+		mainMenu[CurrentlySelected].setFillColor(Color::Blue);
 	}
-
 }

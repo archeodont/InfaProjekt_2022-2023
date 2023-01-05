@@ -9,14 +9,14 @@
 // G³ównym celem jest przetrwanie naszego statku kosmicznego i zniszczenie jak najwiêkszej iloœci wrogów
 
 
-const int width = 960;
+const int width = 1280;
 const int height = 720;
 using namespace sf;
 using namespace std;
 
 int main()
 {
-    RenderWindow window(VideoMode(width, height), "TYRIAN 2000");
+    RenderWindow window(VideoMode(width, height), "MENU - TYRIAN 2000");
     MainMenu mainMenu(window.getSize().x, window.getSize().y);
 
     RectangleShape background;
@@ -32,11 +32,10 @@ int main()
             if (event.type == Event::Closed)
             {
                 window.close();
-
             }
 
 
-            if (event.type == Event::KeyReleased)
+            if (event.type == Event::KeyPressed)
             {
                 if (event.key.code == Keyboard::Up)
                 {
@@ -52,84 +51,84 @@ int main()
 
                 if (event.key.code == Keyboard::Return)
                 {
-                    RenderWindow Play(VideoMode(960, 720), "game_name");
-                    RenderWindow OPTIONS(VideoMode(960, 720), "game_name");
-                    RenderWindow ABOUT(VideoMode(960, 720), "game_name");
+                    RenderWindow Gra(VideoMode(960, 720), "Tyrian 2000");
+                    RenderWindow Zapis(VideoMode(960, 720), "Zapisz gre");
+                    RenderWindow Wczytaj(VideoMode(960, 720), "Wczytaj gre");
 
                     int x = mainMenu.MainMenuPressed();
                     if (x == 0)
                     {
-                        while (Play.isOpen())
+                        while (Gra.isOpen())
                         {
                             Event aevent;
-                            while (Play.pollEvent(aevent))
+                            while (Gra.pollEvent(aevent))
                             {
                                 if (aevent.type == Event::Closed)
                                 {
-                                    Play.close();
+                                    Gra.close();
                                 }
                                 if (aevent.type == Event::KeyPressed)
                                 {
                                     if (aevent.key.code == Keyboard::Escape)
                                     {
-                                        Play.close();
+                                        Gra.close();
                                     }
                                 }
                             }
-                            OPTIONS.close();
-                            ABOUT.close();
-                            Play.clear();
-                            Play.display();
+                            Zapis.close();
+                            Wczytaj.close();
+                            Gra.clear();
+                            Gra.display();
                         }   
                     }
                     if (x == 1)
                     {
-                        while (OPTIONS.isOpen())
+                        while (Zapis.isOpen())
                         {
                             Event aevent;
-                            while (OPTIONS.pollEvent(aevent))
+                            while (Zapis.pollEvent(aevent))
                             {
                                 if (aevent.type == Event::Closed)
                                 {
-                                    OPTIONS.close();
+                                    Zapis.close();
                                 }
                                 if (aevent.type == Event::KeyPressed)
                                 {
                                     if (aevent.key.code == Keyboard::Escape)
                                     {
-                                        OPTIONS.close();
+                                        Zapis.close();
                                     }
                                 }
                             }
-                            Play.close();
-                            OPTIONS.clear();
-                            ABOUT.close();
-                            OPTIONS.display();
+                            Gra.close();
+                            Zapis.clear();
+                            Wczytaj.close();
+                            Zapis.display();
                         }
                     }
                     if (x == 2)
                     {
-                        while (ABOUT.isOpen())
+                        while (Wczytaj.isOpen())
                         {
                             Event aevent;
-                            while (ABOUT.pollEvent(aevent))
+                            while (Wczytaj.pollEvent(aevent))
                             {
                                 if (aevent.type == Event::Closed)
                                 {
-                                    ABOUT.close();
+                                    Wczytaj.close();
                                 }
                                 if (aevent.type == Event::KeyPressed)
                                 {
                                     if (aevent.key.code == Keyboard::Escape)
                                     {
-                                        ABOUT.close();
+                                        Wczytaj.close();
                                     }
                                 }
                             }
-                            Play.close();
-                            OPTIONS.close();
-                            ABOUT.clear();
-                            ABOUT.display();
+                            Gra.close();
+                            Zapis.close();
+                            Wczytaj.clear();
+                            Wczytaj.display();
                         }
                     }
                     if (x == 3)

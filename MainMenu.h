@@ -22,7 +22,8 @@ public:
 	~MainMenu();
 	
 private:
-	int MainMenuSelected;
+	int CurrentlySelected=0;
+	int MainMenuSelected=0;
 	Font font;
 	Text mainMenu[Max_main_menu];
 };
