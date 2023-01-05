@@ -32,3 +32,8 @@ x64/Release/InfaProj.ef15906c.tlog/CL.command.1.tlog
 x64/Release/InfaProj.ef15906c.tlog/CL.command.1.tlog
 *.ipch
 *.ipch
+x64/Release/Źródło.obj
+x64/Release/vc143.pdb
+*.pdb
+*.log
+*.iobj

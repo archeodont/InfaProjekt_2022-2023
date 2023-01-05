@@ -9,7 +9,6 @@ using namespace sf;
 
 class MainMenu
 {
-
 public:
 
 	MainMenu(float Width, float height);
@@ -19,9 +18,9 @@ public:
 	void MoveDown();
 
 	int MainMenuPressed() { return MainMenuSelected;
-	}
+}
 	~MainMenu();
-
+	
 private:
 	int MainMenuSelected;
 	Font font;

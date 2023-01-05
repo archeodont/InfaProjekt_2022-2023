@@ -13,21 +13,21 @@ MainMenu::MainMenu(float width, float height)
 
 	mainMenu[1].setFont(font);
 	mainMenu[1].setFillColor(Color::White);
-	mainMenu[1].setString("Zapisz Grê");
+	mainMenu[1].setString("Zapisz Gre");
 	mainMenu[1].setCharacterSize(70);
-	mainMenu[1].setPosition(400, 400);
+	mainMenu[1].setPosition(400, 300);
 
 	mainMenu[2].setFont(font);
 	mainMenu[2].setFillColor(Color::White);
-	mainMenu[2].setString("Wczytaj Grê");
+	mainMenu[2].setString("Wczytaj Gre");
 	mainMenu[2].setCharacterSize(70);
-	mainMenu[2].setPosition(400, 600);
+	mainMenu[2].setPosition(400, 400);
 
 	mainMenu[3].setFont(font);
 	mainMenu[3].setFillColor(Color::White);
 	mainMenu[3].setString("Wyjdz z Gry");
 	mainMenu[3].setCharacterSize(70);
-	mainMenu[3].setPosition(400, 800);
+	mainMenu[3].setPosition(400, 500);
 
 	MainMenuSelected = -1;
 }
