@@ -16,6 +16,7 @@ public:
 	void draw(RenderWindow& window);
 	void MoveUp();
 	void MoveDown();
+	
 
 	int MainMenuPressed() { return MainMenuSelected;
 }

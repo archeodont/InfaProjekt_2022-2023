@@ -1,13 +1,6 @@
-#include <SFML/Graphics.hpp>
-#include <SFML/Audio.hpp>
-#include <iostream>
-#include <cstdlib>
-#include <ctime>
-#include "MainMenu.h"
-
+#include "biblioteka.h"
 // Gra bêdzie w stylu Space Invaders, tworz¹c program inspirujê siê Tyrian 2000
 // G³ównym celem jest przetrwanie naszego statku kosmicznego i zniszczenie jak najwiêkszej iloœci wrogów
-
 
 const int width = 1280;
 const int height = 720;
@@ -19,10 +12,10 @@ int main()
     RenderWindow window(VideoMode(width, height), "MENU - TYRIAN 2000");
     MainMenu mainMenu(window.getSize().x, window.getSize().y);
 
-    RectangleShape background;
-    Texture Maintexture;
-    Maintexture.loadFromFile("background.jpg");
-    background.setTexture(&Maintexture);
+   
+    sf::Texture Maintexture;
+    Maintexture.loadFromFile("tlo.jpg");
+    Sprite sprite(Maintexture);
 
     while (window.isOpen())
     {
@@ -142,7 +135,7 @@ int main()
             }
 
             window.clear();
-            window.draw(background);
+            window.draw(sprite);
             mainMenu.draw(window);
             window.display();
         }
