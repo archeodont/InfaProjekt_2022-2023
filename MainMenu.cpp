@@ -1,5 +1,5 @@
 #include "MainMenu.h"
-
+int x;
 int menuwidth = 110;
 int menuheight = 350;
 int hdiff = 70;
@@ -78,4 +78,10 @@ void MainMenu::MoveDown()
 		CurrentlySelected = MainMenuSelected;
 		mainMenu[CurrentlySelected].setFillColor(Color::Color(255, 69, 0));
 	}
+}
+
+
+void MainMenu::MenuDisplay(RenderWindow& window)
+{
+
 }

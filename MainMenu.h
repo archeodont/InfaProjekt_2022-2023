@@ -16,15 +16,16 @@ public:
 	void draw(RenderWindow& window);
 	void MoveUp();
 	void MoveDown();
-	
+	void MenuDisplay(RenderWindow& window);
 
 	int MainMenuPressed() { return MainMenuSelected;
 }
 	~MainMenu();
 	
+	
 private:
-	int CurrentlySelected=0;
-	int MainMenuSelected=0;
+	int CurrentlySelected = 0;
+	int MainMenuSelected = 0;
 	Font font;
 	Text mainMenu[Max_main_menu];
 };

@@ -37,3 +37,8 @@ x64/Release/vc143.pdb
 *.pdb
 *.log
 *.iobj
+*.pdb
+*.pdb
+*.ipdb
+*.iobj
+*.exe
