@@ -34,6 +34,11 @@ MainMenu::MainMenu(float width, float hight)
 	mainMenu[3].setPosition(menuwidth, menuheight+3*hdiff);
 
 	MainMenuSelected = 0;
+
+	//Texture Maintexture;
+	//Maintexture.loadFromFile("tlo.jpg");
+	//Sprite sprite(Maintexture);
+	
 }
 
 //destruktor
@@ -45,9 +50,11 @@ MainMenu::~MainMenu()
 
 // Funkcja draw
 void MainMenu::draw(RenderWindow& window) {
+	//window.draw(sprite);
 	for (int i = 0; i < Max_main_menu; i++) {
 		 window.draw(mainMenu[i]);
 	}
+	
 }
 
 //funkcja MuveUp
@@ -82,7 +89,7 @@ void MainMenu::MoveDown()
 
 
 //funkcja update
-void MainMenu::update(Event& event, RenderWindow& window)
+void MainMenu::updateMenu(Event& event, RenderWindow& window)
 {
 	
 		switch (event.type)
