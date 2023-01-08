@@ -35,9 +35,7 @@ MainMenu::MainMenu(float width, float hight)
 
 	MainMenuSelected = 0;
 
-	//Texture Maintexture;
-	//Maintexture.loadFromFile("tlo.jpg");
-	//Sprite sprite(Maintexture);
+
 	
 }
 
@@ -50,7 +48,7 @@ MainMenu::~MainMenu()
 
 // Funkcja draw
 void MainMenu::draw(RenderWindow& window) {
-	//window.draw(sprite);
+	
 	for (int i = 0; i < Max_main_menu; i++) {
 		 window.draw(mainMenu[i]);
 	}
@@ -88,6 +86,7 @@ void MainMenu::MoveDown()
 }
 
 
+
 //funkcja update
 void MainMenu::updateMenu(Event& event, RenderWindow& window)
 {
@@ -100,30 +99,12 @@ void MainMenu::updateMenu(Event& event, RenderWindow& window)
 		case Event::KeyPressed:
 			if (event.key.code == Keyboard::Up)
 			{
-				if (MainMenuSelected >= 0 && MainMenuSelected <= 3) {
-					mainMenu[CurrentlySelected].setFillColor(Color::White);
-
-					MainMenuSelected--;
-					if (MainMenuSelected < 0) {
-						MainMenuSelected = 3;
-					}
-					CurrentlySelected = MainMenuSelected;
-					mainMenu[CurrentlySelected].setFillColor(Color::Color(255, 69, 0));
-				}
+				MoveUp();
 				break;
 			}
 			if (event.key.code == Keyboard::Down)
 			{
-				if (MainMenuSelected >= 0 && MainMenuSelected <= 3) {
-					mainMenu[CurrentlySelected].setFillColor(Color::White);
-
-					MainMenuSelected++;
-					if (MainMenuSelected == 4) {
-						MainMenuSelected = 0;
-					}
-					CurrentlySelected = MainMenuSelected;
-					mainMenu[CurrentlySelected].setFillColor(Color::Color(255, 69, 0));
-				}
+				MoveDown();
 				break;
 			}
 		case Keyboard::Return:
@@ -131,10 +112,10 @@ void MainMenu::updateMenu(Event& event, RenderWindow& window)
 			{
 				printf("wybrano nowa gra\n");
 				break;
-			}
+			} 
 			if (MainMenuSelected == 1)
 			{
-				printf("wybrano zapisz gre\n");
+		 		printf("wybrano zapisz gre\n");
 				break;
 			}
 			if (MainMenuSelected == 2)
@@ -155,3 +136,4 @@ void MainMenu::updateMenu(Event& event, RenderWindow& window)
    
 
 }
+

@@ -12,7 +12,7 @@ using namespace std;
 
 int main()
 {
-    RenderWindow window(VideoMode(width, height), "MENU - TYRIAN 2000");
+    RenderWindow window(VideoMode(width, height), " --- TYRIAN 2000 ---");
     MainMenu mainMenu(window.getSize().x, window.getSize().y);
     Game game;
 
@@ -31,13 +31,9 @@ int main()
                 window.close();
             }
 
-
-            window.clear();
-            mainMenu.updateMenu(event, window);
-            //game.update(event, window);
-            window.draw(sprite);
-            mainMenu.draw(window);
-            window.display();
+            game.update(event, window, mainMenu);
+         
+            game.render(window,mainMenu);
         }
 
 
