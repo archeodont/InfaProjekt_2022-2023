@@ -1,9 +1,5 @@
 #pragma once
-#include <SFML/Graphics.hpp> 
-#include <iostream>
-
-using namespace std;
-using namespace sf;
+#include "biblioteka.h"
 
 #define Max_main_menu 4
 
@@ -11,12 +7,12 @@ class MainMenu
 {
 public:
 
-	MainMenu(float Width, float height);
+	MainMenu(float width,float hight);
 
 	void draw(RenderWindow& window);
 	void MoveUp();
 	void MoveDown();
-	void MenuDisplay(RenderWindow& window);
+	void update(Event& event, RenderWindow& window);
 
 	int MainMenuPressed() { return MainMenuSelected;
 }
@@ -28,5 +24,6 @@ private:
 	int MainMenuSelected = 0;
 	Font font;
 	Text mainMenu[Max_main_menu];
+	Event ev;
 };
 

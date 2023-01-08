@@ -1,8 +1,15 @@
 #pragma once
+
+#include<iostream>
+#include<vector>
+#include<ctime>
+#include<sstream>
+
 #include <SFML/Graphics.hpp>
+#include <SFML/System.hpp>
+#include <SFML/Window.hpp>
 #include <SFML/Audio.hpp>
-#include <iostream>
-#include <cstdlib>
-#include <ctime>
-#include "MainMenu.h"
-#include "MenuDisplay.h"
+#include <SFML/Network.hpp>
+
+using namespace sf;
+using namespace std;

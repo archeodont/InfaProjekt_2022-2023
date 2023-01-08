@@ -42,3 +42,8 @@ x64/Release/vc143.pdb
 *.ipdb
 *.iobj
 *.exe
+*.ipch
+*.ipch
+*.tlog
+*.tlog
+*.pdb

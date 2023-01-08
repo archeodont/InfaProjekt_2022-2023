@@ -1,4 +1,5 @@
-﻿#include "Game.h"
+﻿#include "biblioteka.h"
+#include "MainMenu.h"
 // Gra bêdzie w stylu Space Invaders, tworz¹c program inspirujê siê Tyrian 2000
 // G³ównym celem jest przetrwanie naszego statku kosmicznego i zniszczenie jak najwiêkszej iloœci wrogów
 
@@ -14,65 +15,31 @@ int main()
     RenderWindow window(VideoMode(width, height), "MENU - TYRIAN 2000");
     MainMenu mainMenu(window.getSize().x, window.getSize().y);
 
+   
 
     sf::Texture Maintexture;
     Maintexture.loadFromFile("tlo.jpg");
     Sprite sprite(Maintexture);
 
-   
-
     while (window.isOpen())
     {
-        Event ev;
-        while (window.pollEvent(ev))
+        Event event;
+        while (window.pollEvent(event))
         {
-            switch (ev.type)
+            if (event.type == Event::Closed)
             {
-            case Event::Closed:
                 window.close();
-                break;
-            case Event::KeyPressed:
-                if (ev.key.code == Keyboard::Up)
-                {
-                    mainMenu.MoveUp();
-                    break;
-                }
-                if (ev.key.code == Keyboard::Down)
-                {
-                    mainMenu.MoveDown();
-                    break;
-                }
-            case Keyboard::Return:
-                if (mainMenu.MainMenuPressed() == 0)
-                {
-                    printf("wybrano nowa gra\n");
-                    break;
-                }
-                if (mainMenu.MainMenuPressed() == 1)
-                {
-                    printf("wybrano zapisz gre\n");
-                    break;
-                }
-                if (mainMenu.MainMenuPressed() == 2)
-                {
-                    printf("wybrano wczytaj gre\n");
-                    break;
-                }
-                if (mainMenu.MainMenuPressed() == 3)
-                {
-                    printf("wybrano wyjdz z gry\n");
-                    window.close();
-                    break;
-                }
-
             }
-         
+
+
+            window.clear();
+            mainMenu.update(event, window);
+            window.draw(sprite);
+            mainMenu.draw(window);
+            window.display();
         }
 
-        window.clear();
-        window.draw(sprite);
-        mainMenu.draw(window);
-        window.display();
+
     }
 
     return 0;
