@@ -1,7 +1,5 @@
 #include "biblioteka.h"
 #include "game.h"
-#include "MainMenu.h"	
-
 
 
 
@@ -24,9 +22,14 @@ void Game::DrawBackground(RenderWindow& window)
 	Sprite sprite(Maintexture);
 	window.draw(sprite);
 }
-// funkcjie odpowiedzialne za przemieszczanie siê pomiêdzy etapami gra,menu,koniec gry
+//rysowanie t³a w grze
+void Game::DrawBackgroundGame(RenderWindow& window)
+{
 
-void Game::StageControl(Event& event, MainMenu& mainMenu)
+}
+
+// funkcjie odpowiedzialne za przemieszczanie siê pomiêdzy etapami gra,menu,koniec gry
+void Game::StageControl(Event& event, MainMenu& mainMenu,Starship& starship)
 {
 	int x = mainMenu.MainMenuPressed();
 	switch (gameStage)
@@ -39,7 +42,7 @@ void Game::StageControl(Event& event, MainMenu& mainMenu)
 				{
 					if ((x == 0) && (event.key.code == Keyboard::Enter))
 					{
-						gameStage++;
+						gameStage = 1;
 						break;
 					}
 				}
@@ -54,16 +57,33 @@ void Game::StageControl(Event& event, MainMenu& mainMenu)
 					{
 						if (event.key.code == Keyboard::Escape)
 						{
-							gameStage--;
-							break;
+							cout << "powrót do menu\n";
+							gameStage = 0;
 						}
+						if (event.key.code == Keyboard::Up)
+						{
+							starship.MoveUp();
+						}
+						if (event.key.code == Keyboard::Down)
+						{
+							starship.MoveDown();
+						}
+						if (event.key.code == Keyboard::Left)
+						{
+							starship.MoveLeft();	
+						}
+						if (event.key.code == Keyboard::Right)
+						{
+							starship.MoveRight();
+						}
+						break;
 					}
 			}
 	}
 }
 
 // funkcja okreœlaj¹ca co w danym czasie jest wykonywane
-void Game::update(Event& event, RenderWindow& window,MainMenu& mainMenu)
+void Game::update(Event& event, RenderWindow& window,MainMenu& mainMenu, Starship& starship)
 {	
 	
 
@@ -72,10 +92,10 @@ void Game::update(Event& event, RenderWindow& window,MainMenu& mainMenu)
 	{
 	case menu:
 		mainMenu.updateMenu(event,window);
-		StageControl(event, mainMenu);
+		StageControl(event, mainMenu,starship);
 		break;
 	case gra:
-		StageControl(event, mainMenu);
+		StageControl(event, mainMenu,starship);
 		break;
 	case koniecGry:
 		break;
@@ -84,9 +104,9 @@ void Game::update(Event& event, RenderWindow& window,MainMenu& mainMenu)
 }
 
 //funkcja okreœlaj¹ca co w danym czasie jest renderowane
-void Game::render(RenderWindow& window, MainMenu& mainMenu)
+void Game::render(RenderWindow& window, MainMenu& mainMenu, Starship& starship)
 {
-    window.clear();
+    window.clear(Color::Blue);
   
 	switch (gameStage)
 	{
@@ -96,6 +116,7 @@ void Game::render(RenderWindow& window, MainMenu& mainMenu)
 
 		break;
 	case gra:
+		starship.Drawstarship(window);
 
 		break;
 	case koniecGry:

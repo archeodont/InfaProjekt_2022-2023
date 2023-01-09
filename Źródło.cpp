@@ -1,6 +1,6 @@
 ﻿#include "biblioteka.h"
-#include "MainMenu.h"
 #include "game.h"
+
 // Gra bêdzie w stylu Space Invaders, tworz¹c program inspirujê siê Tyrian 2000
 // G³ównym celem jest przetrwanie naszego statku kosmicznego i zniszczenie jak najwiêkszej iloœci wrogów
 
@@ -9,18 +9,18 @@ const int height = 720;
 using namespace sf;
 using namespace std;
 
-
+//pętla główna
 int main()
-{
+{   
+    //Stworzenie okna gry
     RenderWindow window(VideoMode(width, height), " --- TYRIAN 2000 ---");
+    
+    //wywołanie wszystkich klas
     MainMenu mainMenu(window.getSize().x, window.getSize().y);
     Game game;
+    Starship starship;
 
-
-    Texture Maintexture;
-    Maintexture.loadFromFile("tlo.jpg");
-    Sprite sprite(Maintexture);
-
+    //Pętla gry
     while (window.isOpen())
     {
         Event event;
@@ -31,13 +31,12 @@ int main()
                 window.close();
             }
 
-            game.update(event, window, mainMenu);
+            // Funkcja odpowiedzialna za obliczenia oraz obsluge
+            game.update(event, window, mainMenu,starship);
          
-            game.render(window,mainMenu);
+            //Funkcja odpowiedzialna za rysowanie okna
+            game.render(window,mainMenu,starship);
         }
-
-
     }
-
     return 0;
 }
