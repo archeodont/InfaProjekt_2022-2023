@@ -60,21 +60,28 @@ void Game::StageControl(Event& event, MainMenu& mainMenu,Starship& starship)
 							cout << "powrót do menu\n";
 							gameStage = 0;
 						}
-						if (event.key.code == Keyboard::Up)
+						// funkcje odpowiedzialne za poruszanie sie statkiem	
+						if (Keyboard::isKeyPressed(Keyboard::Up))
 						{
 							starship.MoveUp();
+							cout << "Gora\n";
 						}
-						if (event.key.code == Keyboard::Down)
+						
+						if (Keyboard::isKeyPressed(Keyboard::Down))
 						{
 							starship.MoveDown();
+							cout << "Dol\n";
 						}
-						if (event.key.code == Keyboard::Left)
+
+						if (Keyboard::isKeyPressed(Keyboard::Left))
 						{
-							starship.MoveLeft();	
+							starship.MoveLeft();
+							cout << "Lewo\n";
 						}
-						if (event.key.code == Keyboard::Right)
+						if (Keyboard::isKeyPressed(Keyboard::Right))
 						{
 							starship.MoveRight();
+							cout << "Prawo\n";
 						}
 						break;
 					}

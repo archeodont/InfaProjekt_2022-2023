@@ -10,25 +10,25 @@ MainMenu::MainMenu(float width, float hight)
 		cout << "Nie wykryto pliku arial";
 
 	mainMenu[0].setFont(font);
-	mainMenu[0].setFillColor(Color::Color(255, 69, 0));
+	mainMenu[0].setFillColor(Color::Color(255, 215, 0));
 	mainMenu[0].setString("Nowa Gra");
 	mainMenu[0].setCharacterSize(70);
 	mainMenu[0].setPosition(menuwidth, menuheight);
 
 	mainMenu[1].setFont(font);
-	mainMenu[1].setFillColor(Color::White);
+	mainMenu[1].setFillColor(Color::Color(120, 80, 0));
 	mainMenu[1].setString("Ranking");
 	mainMenu[1].setCharacterSize(70);
 	mainMenu[1].setPosition(menuwidth , menuheight + hdiff);
 
 	mainMenu[2].setFont(font);
-	mainMenu[2].setFillColor(Color::White);
+	mainMenu[2].setFillColor(Color::Color(120, 80, 0));
 	mainMenu[2].setString("Opis");
 	mainMenu[2].setCharacterSize(70);
 	mainMenu[2].setPosition(menuwidth , menuheight+2*hdiff);
 
 	mainMenu[3].setFont(font);
-	mainMenu[3].setFillColor(Color::White);
+	mainMenu[3].setFillColor(Color::Color(120, 80, 0));
 	mainMenu[3].setString("Wyjdz z Gry");
 	mainMenu[3].setCharacterSize(70);
 	mainMenu[3].setPosition(menuwidth, menuheight+3*hdiff);
@@ -59,14 +59,14 @@ void MainMenu::draw(RenderWindow& window) {
 void MainMenu::MoveUp()
 {
 	if (MainMenuSelected >= 0 && MainMenuSelected <= 3) {
-		mainMenu[CurrentlySelected].setFillColor(Color::White);  
+		mainMenu[CurrentlySelected].setFillColor(Color::Color(120, 80, 0));
 
 		MainMenuSelected--;
 		if (MainMenuSelected < 0) {
 			MainMenuSelected = 3;
 		}
 		CurrentlySelected = MainMenuSelected;  
-		mainMenu[CurrentlySelected].setFillColor(Color::Color(255, 69, 0));
+		mainMenu[CurrentlySelected].setFillColor(Color::Color(255, 215, 0));
 	}
 }
 
@@ -74,14 +74,14 @@ void MainMenu::MoveUp()
 void MainMenu::MoveDown()
 {
 	if (MainMenuSelected >= 0 && MainMenuSelected <= 3) {
-		mainMenu[CurrentlySelected].setFillColor(Color::White);
+		mainMenu[CurrentlySelected].setFillColor(Color::Color(120, 80, 0));
 
 		MainMenuSelected++;
 		if (MainMenuSelected == 4) {
 			MainMenuSelected = 0;
 		}
 		CurrentlySelected = MainMenuSelected;
-		mainMenu[CurrentlySelected].setFillColor(Color::Color(255, 69, 0));
+		mainMenu[CurrentlySelected].setFillColor(Color::Color(255, 215, 0));
 	}
 }
 

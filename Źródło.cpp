@@ -14,6 +14,7 @@ int main()
 {   
     //Stworzenie okna gry
     RenderWindow window(VideoMode(width, height), " --- TYRIAN 2000 ---");
+    window.setFramerateLimit(60);
     
     //wywołanie wszystkich klas
     MainMenu mainMenu(window.getSize().x, window.getSize().y);
@@ -37,6 +38,8 @@ int main()
             //Funkcja odpowiedzialna za rysowanie okna
             game.render(window,mainMenu,starship);
         }
+      
+
     }
     return 0;
 }
