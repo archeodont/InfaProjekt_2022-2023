@@ -1,19 +1,8 @@
-﻿  Starship.cpp
-F:\infa-projekt\InfaProjekt_2022-2023\Starship.cpp(63,31): warning C4244: "argument": konwersja z "int" do "float", możliwa utrata danych
-F:\infa-projekt\InfaProjekt_2022-2023\Starship.cpp(63,29): warning C4244: "argument": konwersja z "int" do "float", możliwa utrata danych
-  Źródło.cpp
-F:\infa-projekt\InfaProjekt_2022-2023\Źródło.cpp(20,59): warning C4244: "argument": konwersja z "T" do "float", możliwa utrata danych
-          with
-          [
-              T=unsigned int
-          ]
-F:\infa-projekt\InfaProjekt_2022-2023\Źródło.cpp(20,39): warning C4244: "argument": konwersja z "T" do "float", możliwa utrata danych
-          with
-          [
-              T=unsigned int
-          ]
+﻿  Enemy.cpp
+F:\infa-projekt\InfaProjekt_2022-2023\Enemy.cpp(61,36): warning C4244: "argument": konwersja z "int" do "float", możliwa utrata danych
+F:\infa-projekt\InfaProjekt_2022-2023\Enemy.cpp(61,30): warning C4244: "argument": konwersja z "int" do "float", możliwa utrata danych
   Trwa generowanie kodu
-  3 of 135 functions ( 2.2%) were compiled, the rest were copied from previous compilation.
+  3 of 143 functions ( 2.1%) were compiled, the rest were copied from previous compilation.
     0 functions were new in current compilation
     0 functions had inline decision re-evaluated but remain unchanged
   Zakończono generowanie kodu

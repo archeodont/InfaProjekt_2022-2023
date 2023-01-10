@@ -14,12 +14,14 @@ int main()
 {   
     //Stworzenie okna gry
     RenderWindow window(VideoMode(width, height), " --- TYRIAN 2000 ---");
-    window.setFramerateLimit(60);
+    window.setFramerateLimit(30);
     
     //wywołanie wszystkich klas
     MainMenu mainMenu(window.getSize().x, window.getSize().y);
     Game game;
     Starship starship;
+    Enemy enemy;
+    Clock EnemyClock;
 
     //Pętla gry
     while (window.isOpen())
@@ -33,13 +35,14 @@ int main()
             }
 
             // Funkcja odpowiedzialna za obliczenia oraz obsluge
-            game.update(event, window, mainMenu,starship);
-         
-            //Funkcja odpowiedzialna za rysowanie okna
-            game.render(window,mainMenu,starship);
-        }
-      
+            game.updateEvent(event, window, mainMenu,starship);
+        } 
 
+        //funkcja odpowiedzialna za uaktualnianie statystyk w czasie rzeczywistym
+        game.update(window,mainMenu,starship,enemy);
+
+        //Funkcja odpowiedzialna za rysowanie okna
+        game.render(window, mainMenu, starship,enemy);
     }
     return 0;
 }

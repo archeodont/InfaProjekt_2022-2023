@@ -4,23 +4,23 @@ class Enemy
 {
 
 private:
-	//Pozycje wrogów
-	int x[10];
-	int y[10];
-
-	//predkosc ruchu wrogów
-	int dx = 5;
-	int dy = 5;
-
+	//zmienne pocz¹tkowe
+	int x[20], y[20];
+	int dx[20], dy[20];
+	int frame = 24;
+	int xclock = 0;
+	Texture EnemyTexture[20];
+	Sprite EnemySprite[20];
 
 public:
 
-	void SetStartPosition();
+	void ZmiennePoczatkowe();
 	Enemy();
 	~Enemy();
+	void MakeEnemy();
 	void MovePosition();
-	void DrawEnemy();
-	
+	void DrawEnemy(RenderWindow& window);
+	void xClock();
 
 };
 

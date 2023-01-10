@@ -34,66 +34,52 @@ void Game::StageControl(Event& event, MainMenu& mainMenu,Starship& starship)
 	int x = mainMenu.MainMenuPressed();
 	switch (gameStage)
 	{
-		case menu:
+	case menu:
+	{
+		switch (event.type)
 		{
-			switch (event.type)
+			case Event::KeyPressed:
 			{
-				case Event::KeyPressed:
+				if ((x == 0) && (event.key.code == Keyboard::Enter))
 				{
-					if ((x == 0) && (event.key.code == Keyboard::Enter))
-					{
-						gameStage = 1;
-						break;
-					}
+					gameStage = 1;
+					break;
 				}
-			
+				if ((x == 1) && (event.key.code == Keyboard::Enter))
+				{
+					//komenda otwieraj¹ca ranking
+					break;
+				}
+				if ((x == 2) && (event.key.code == Keyboard::Enter))
+				{
+					//komenda otwierajaca opis
+					break;
+				}
 			}
 		break;
 		}
-		case gra:
-			switch (event.type)
+	case gra:
+		switch (event.type)
+		{
+			case Event::KeyPressed:
 			{
-				case Event::KeyPressed:
-					{
-						if (event.key.code == Keyboard::Escape)
-						{
-							cout << "powrót do menu\n";
-							gameStage = 0;
-						}
-						// funkcje odpowiedzialne za poruszanie sie statkiem	
-						if (Keyboard::isKeyPressed(Keyboard::Up))
-						{
-							starship.MoveUp();
-							cout << "Gora\n";
-						}
-						
-						if (Keyboard::isKeyPressed(Keyboard::Down))
-						{
-							starship.MoveDown();
-							cout << "Dol\n";
-						}
+				if (event.key.code == Keyboard::Escape)
+				{
+					cout << "powrót do menu\n";
+					gameStage = 0;
+				}
 
-						if (Keyboard::isKeyPressed(Keyboard::Left))
-						{
-							starship.MoveLeft();
-							cout << "Lewo\n";
-						}
-						if (Keyboard::isKeyPressed(Keyboard::Right))
-						{
-							starship.MoveRight();
-							cout << "Prawo\n";
-						}
-						break;
-					}
+
+				break;
 			}
+		}
+	}
 	}
 }
 
-// funkcja okreœlaj¹ca co w danym czasie jest wykonywane
-void Game::update(Event& event, RenderWindow& window,MainMenu& mainMenu, Starship& starship)
+// funkcja okreœlaj¹ca pojedyncze sekwencje zmiany pozycji menu,gry,opcji
+void Game::updateEvent(Event& event, RenderWindow& window,MainMenu& mainMenu, Starship& starship)
 {	
-	
-
 	//Aktualne zdarzenia
 	switch (gameStage)
 	{
@@ -107,11 +93,43 @@ void Game::update(Event& event, RenderWindow& window,MainMenu& mainMenu, Starshi
 	case koniecGry:
 		break;
 	}
-    
+}// funkcje odpowiedzialne za poruszanie sie statkiem	
+void Game::update(RenderWindow& window, MainMenu& mainMenu, Starship& starship, Enemy& enemy)
+{	switch(gameStage)
+	case gra:
+	{	
+		enemy.MovePosition();
+		enemy.xClock();
+		if (gameStage == gra)
+		{
+			if (Keyboard::isKeyPressed(Keyboard::Up))
+			{
+				starship.MoveUp();
+				cout << "Gora\n";
+			}
+
+			if (Keyboard::isKeyPressed(Keyboard::Down))
+			{
+				starship.MoveDown();
+				cout << "Dol\n";
+			}
+
+			if (Keyboard::isKeyPressed(Keyboard::Left))
+			{
+				starship.MoveLeft();
+				cout << "Lewo\n";
+			}
+			if (Keyboard::isKeyPressed(Keyboard::Right))
+			{
+				starship.MoveRight();
+				cout << "Prawo\n";
+			}
+		}
+	}
 }
 
 //funkcja okreœlaj¹ca co w danym czasie jest renderowane
-void Game::render(RenderWindow& window, MainMenu& mainMenu, Starship& starship)
+void Game::render(RenderWindow& window, MainMenu& mainMenu, Starship& starship, Enemy& enemy)
 {
     window.clear(Color::Blue);
   
@@ -124,6 +142,7 @@ void Game::render(RenderWindow& window, MainMenu& mainMenu, Starship& starship)
 		break;
 	case gra:
 		starship.Drawstarship(window);
+		enemy.DrawEnemy(window);
 
 		break;
 	case koniecGry:
