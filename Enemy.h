@@ -5,22 +5,19 @@ class Enemy
 
 private:
 	//zmienne pocz¹tkowe
-	int x[20], y[20];
-	int dx[20], dy[20];
+	float x[10],y[10], dx[10], dy[10];
 	int frame = 24;
 	int xclock = 0;
-	Texture EnemyTexture[20];
-	Sprite EnemySprite[20];
+	int FW[10] = { 0,0,0,0,0,0,0,0,0,0 };
+	Texture EnemyTexture[10];
+	Sprite EnemySprite[10];
 
 public:
 
-	void ZmiennePoczatkowe();
-	Enemy();
+	void ZmiennePoczatkowe(int NumberEnemy);
+	Enemy(int NumberEnemy);
 	~Enemy();
-	void MakeEnemy();
 	void MovePosition();
 	void DrawEnemy(RenderWindow& window);
-	void xClock();
-
 };
 

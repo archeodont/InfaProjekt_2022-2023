@@ -20,12 +20,16 @@ int main()
     MainMenu mainMenu(window.getSize().x, window.getSize().y);
     Game game;
     Starship starship;
-    Enemy enemy;
+    Enemy enemy(10);
     Clock EnemyClock;
-
+    
+    
     //Pętla gry
     while (window.isOpen())
     {
+        //Time elapsed1 = EnemyClock.getElapsedTime();
+        //  if (elapsed1.asSeconds() >= 20)
+      
         Event event;
         while (window.pollEvent(event))
         {

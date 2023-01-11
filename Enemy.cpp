@@ -1,57 +1,63 @@
 #include "Enemy.h"
 #include "biblioteka.h"
 
-void Enemy::ZmiennePoczatkowe()
+void Enemy::ZmiennePoczatkowe(int NumberEnemy)
 {
-	for(int i = 0; i < 20;i++)
+	int i = 0;
+	for ( i; i < NumberEnemy; i++)
 	{
-		x[i] = -400;
+		x[i] = -50 - i * 200;
 		y[i] = 0;
 		dx[i] = 10;
-		dy[i] = 10;
+		dy[i] = 1;
+		cout << x[i];
 	}
 }
 
-Enemy::Enemy()
+Enemy::Enemy(int NumberEnemy)
 {
-	ZmiennePoczatkowe();
+	ZmiennePoczatkowe(NumberEnemy);
 }
 
-void Enemy::MakeEnemy()
-{
-	for (int i = 0; i < 10; i++)
-	{
-
-	}
-}
 
 Enemy::~Enemy()
 {
-
+	
 }
 // funkcja s³uzaca za zmiane pozycji
 void Enemy::MovePosition()
 {
-	for (int i = 0; i < 20; i++)
+	
+	for (int i = 0; i < 10; i++)
 	{
 		x[i] += dx[i];
-		if (((x[i] < 0) && (y[i] > 25)) || (x[i] > 1231))
-		{
-			dx[i] = -dx[i];
-			y[i] += 45;
-		}
-		if (y[i] > 650)
-		{
+		y[i] += dy[i];
+		if ((dy[i] > 0.5) && (dy[i] < 30))
+			dy[i] += 0.012 * i;
+		if ((dy[i] < -0.5) && (dy[i] > -30))
+			dy[i] += 0.006 * i;
+		if ((dx[i] > 0.5)&&(dx[i]<30))
+			dx[i] += 0.01 * i;
+		if(FW[i]<201)
+		FW[i]+=1;
+			if (((x[i] < 0) && (FW[i]>200)) || (x[i] > 1231))
 			{
-				
+				dx[i] = -dx[i];
 			}
-		}
+			if ((y[i] > 660)||(y[i]<0))
+			{
+				dy[i] = -dy[i];
+			}
 	}
 }
 //frame == 21;
 // funkcja wyswietlajaca wroga
 void Enemy::DrawEnemy(RenderWindow& window)
 {
+	xclock++;
+	if (xclock == 8)
+		xclock = 0;
+
 	for (int i = 0; i < 10; i++)
 	{
 		Texture EnemyTexture;
@@ -61,17 +67,9 @@ void Enemy::DrawEnemy(RenderWindow& window)
 		EnemySprite.setPosition(x[i], y[i]);
 		window.draw(EnemySprite);
 	}
+	
 }
 
-void Enemy::xClock()
-{	
-	xclock++;
-	if (xclock == 8)
-		xclock = 0;
-	if (xclock == 0)
-		cout << "xclock = 0\n";
-	else
-		cout << "xclock = " << xclock << endl;
-}
+
 
 

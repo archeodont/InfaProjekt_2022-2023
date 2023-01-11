@@ -17,15 +17,19 @@ Game::~Game()
 // rysowanie t³a w menu
 void Game::DrawBackground(RenderWindow& window)
 {
-	Texture Maintexture;
-	Maintexture.loadFromFile("tlo.jpg");
-	Sprite sprite(Maintexture);
-	window.draw(sprite);
+	Texture MenuTexture;
+	MenuTexture.loadFromFile("tlo.jpg");
+	Sprite MenuSprite(MenuTexture);
+	window.draw(MenuSprite);
 }
 //rysowanie t³a w grze
 void Game::DrawBackgroundGame(RenderWindow& window)
-{
-
+{	
+		Texture GameTexture;
+		GameTexture.loadFromFile("tlogra.png");
+		Sprite GameSprite(GameTexture);
+		GameSprite.setScale(1.3, 1.3);
+		window.draw(GameSprite);
 }
 
 // funkcjie odpowiedzialne za przemieszczanie siê pomiêdzy etapami gra,menu,koniec gry
@@ -65,11 +69,9 @@ void Game::StageControl(Event& event, MainMenu& mainMenu,Starship& starship)
 			{
 				if (event.key.code == Keyboard::Escape)
 				{
-					cout << "powrót do menu\n";
+					cout << "powrot do menu\n";
 					gameStage = 0;
 				}
-
-
 				break;
 			}
 		}
@@ -99,30 +101,23 @@ void Game::update(RenderWindow& window, MainMenu& mainMenu, Starship& starship, 
 	case gra:
 	{	
 		enemy.MovePosition();
-		enemy.xClock();
 		if (gameStage == gra)
 		{
 			if (Keyboard::isKeyPressed(Keyboard::Up))
 			{
 				starship.MoveUp();
-				cout << "Gora\n";
 			}
-
 			if (Keyboard::isKeyPressed(Keyboard::Down))
 			{
 				starship.MoveDown();
-				cout << "Dol\n";
 			}
-
 			if (Keyboard::isKeyPressed(Keyboard::Left))
 			{
 				starship.MoveLeft();
-				cout << "Lewo\n";
 			}
 			if (Keyboard::isKeyPressed(Keyboard::Right))
 			{
 				starship.MoveRight();
-				cout << "Prawo\n";
 			}
 		}
 	}
@@ -141,8 +136,10 @@ void Game::render(RenderWindow& window, MainMenu& mainMenu, Starship& starship, 
 
 		break;
 	case gra:
-		starship.Drawstarship(window);
+		DrawBackgroundGame(window);
 		enemy.DrawEnemy(window);
+		starship.Drawstarship(window);
+		
 
 		break;
 	case koniecGry:
