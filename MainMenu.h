@@ -1,7 +1,7 @@
 #pragma once
 #include "biblioteka.h"
 
-#define Max_main_menu 4
+#define Max_main_menu 6
 
 
 class MainMenu
@@ -27,5 +27,5 @@ private:
 	int MainMenuSelected = 0;
 	Font font;
 	Text mainMenu[Max_main_menu];
-	Event event;
+	
 };

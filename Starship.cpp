@@ -3,6 +3,11 @@
 // po³o¿enie pocz¹tkowe oraz predkosci zmiany po³o¿enia Statku
 void Starship::ZmiennePocz¹tkowe()
 {
+	// iloœæ ¿ycia statku
+	SHp = 500;
+	// iloœæ zadawanych obra¿eñ
+	Dmg = 100;
+	//koordynaty i ich zmienne
 	x = 600;
 	y = 550;
 	dx = 15;

@@ -19,7 +19,7 @@ public:
 private:
 	Texture StarshipTexture;
 	Sprite StarshipSprite;
-	int x, dx, y, dy;
+	int x, dx, y, dy,Dmg,SHp;
 	const int width = 1280;
 	const int height = 720;
 };

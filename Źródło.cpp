@@ -12,9 +12,12 @@ using namespace std;
 //pętla główna
 int main()
 {   
+    // inicjowanie liczb pseudolosowych
+    srand(time(NULL));
+
     //Stworzenie okna gry
     RenderWindow window(VideoMode(width, height), " --- TYRIAN 2000 ---");
-    window.setFramerateLimit(30);
+    window.setFramerateLimit(45);
     
     //wywołanie wszystkich klas
     MainMenu mainMenu(window.getSize().x, window.getSize().y);
