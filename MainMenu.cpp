@@ -1,5 +1,5 @@
 #include "MainMenu.h"
-int menuwidth = 110;
+int menuwidth = 640;
 int menuheight = 250;
 int hdiff = 70;
 
@@ -13,37 +13,38 @@ MainMenu::MainMenu(float width, float hight)
 	mainMenu[0].setFillColor(Color::Color(255, 215, 0));
 	mainMenu[0].setString("Graj");
 	mainMenu[0].setCharacterSize(60);
-	mainMenu[0].setPosition(menuwidth, menuheight);
+	mainMenu[0].setPosition(menuwidth - mainMenu[0].getLocalBounds().width / 2.f, menuheight);
+	
 
 	mainMenu[1].setFont(font);
 	mainMenu[1].setFillColor(Color::Color(120, 80, 0));
 	mainMenu[1].setString("Zapisz gre");
 	mainMenu[1].setCharacterSize(60);
-	mainMenu[1].setPosition(menuwidth , menuheight + hdiff);
+	mainMenu[1].setPosition(menuwidth - mainMenu[1].getLocalBounds().width / 2.f, menuheight + hdiff);
 
 	mainMenu[2].setFont(font);
 	mainMenu[2].setFillColor(Color::Color(120, 80, 0));
 	mainMenu[2].setString("Wczytaj gre");
 	mainMenu[2].setCharacterSize(60);
-	mainMenu[2].setPosition(menuwidth, menuheight + 2*hdiff);
+	mainMenu[2].setPosition(menuwidth - mainMenu[2].getLocalBounds().width / 2.f, menuheight + hdiff * 2);
 
 	mainMenu[3].setFont(font);
 	mainMenu[3].setFillColor(Color::Color(120, 80, 0));
 	mainMenu[3].setString("Ranking");
 	mainMenu[3].setCharacterSize(60);
-	mainMenu[3].setPosition(menuwidth, menuheight + 3*hdiff);
+	mainMenu[3].setPosition(menuwidth - mainMenu[3].getLocalBounds().width / 2.f, menuheight + hdiff * 3);
 
 	mainMenu[4].setFont(font);
 	mainMenu[4].setFillColor(Color::Color(120, 80, 0));
 	mainMenu[4].setString("Opis");
 	mainMenu[4].setCharacterSize(60);
-	mainMenu[4].setPosition(menuwidth , menuheight+4*hdiff);
+	mainMenu[4].setPosition(menuwidth - mainMenu[4].getLocalBounds().width / 2.f, menuheight + hdiff * 4);
 
 	mainMenu[5].setFont(font);
 	mainMenu[5].setFillColor(Color::Color(120, 80, 0));
 	mainMenu[5].setString("Wyjdz z Gry");
 	mainMenu[5].setCharacterSize(60);
-	mainMenu[5].setPosition(menuwidth, menuheight+5*hdiff);
+	mainMenu[5].setPosition(menuwidth - mainMenu[5].getLocalBounds().width / 2.f, menuheight + hdiff * 5);
 
 	MainMenuSelected = 0;
 

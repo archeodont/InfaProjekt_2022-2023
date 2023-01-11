@@ -25,6 +25,7 @@ int main()
     Starship starship;
     Enemy enemy(10);
     Clock EnemyClock;
+    Opis opis;
     
     
     //Pętla gry
@@ -49,7 +50,7 @@ int main()
         game.update(window,mainMenu,starship,enemy);
 
         //Funkcja odpowiedzialna za rysowanie okna
-        game.render(window, mainMenu, starship,enemy);
+        game.render(window, mainMenu, starship,enemy,opis);
     }
     return 0;
 }

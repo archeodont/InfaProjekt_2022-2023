@@ -9,7 +9,7 @@ Game::Game()
 	MenuTexture.loadFromFile("tlo.png");
 	MenuSprite.setTexture(MenuTexture);
 	MenuSprite.setScale(1.7,1);
-	MenuSprite.setTextureRect(IntRect(0,150,1280,720));
+	MenuSprite.setTextureRect(IntRect(0,280,1280,720));
 	
 	//pobieranie t³a w grze
 	GameTexture.loadFromFile("tlogra.png");
@@ -112,55 +112,87 @@ void Game::StageControl(Event& event,RenderWindow& window, MainMenu& mainMenu,St
 	switch (gameStage)
 	{
 	case stage::menu:
+	{
+		switch (event.type)
 		{
-			switch (event.type)
+		case Event::KeyPressed:
+		{
+			if ((x == 0) && (event.key.code == Keyboard::Enter))
 			{
-				case Event::KeyPressed:
-				{
-					if ((x == 0) && (event.key.code == Keyboard::Enter))
-					{
-						//komenda rozpoczynaj¹ca gre
-						gameStage = stage::gra;
-						break;
-					}
-					if ((x == 1) && (event.key.code == Keyboard::Enter))
-					{
-						//komenda otwieraj¹ca zapis gry
-						break;
-					}
-					if ((x == 2) && (event.key.code == Keyboard::Enter))
-					{
-						//komenda otwierajaca wczytanie gry
-						break;
-					}
-					if ((x == 3) && (event.key.code == Keyboard::Enter))
-					{
-						//komenda otwierajaca Ranking
-						break;
-					}
-					if ((x == 4) && (event.key.code == Keyboard::Enter))
-					{
-						//komenda otwierajaca opis
-						break;
-					}
-					if ((x == 5) && (event.key.code == Keyboard::Enter))
-					{
-						//komenda zamykaj¹ca gre
-						window.close();
-						break;
-					}
-				}
+				//komenda rozpoczynaj¹ca gre
+				gameStage = stage::gra;
 				break;
 			}
-			case stage::gra:
-				if ((Keyboard::isKeyPressed(Keyboard::Escape)) && (gameStage == 1))
-				{
-					gameStage = stage::menu;
-					cout << "Gamestage =" << gameStage << " \n";
-				}
+			if ((x == 1) && (event.key.code == Keyboard::Enter))
+			{
+				//komenda otwieraj¹ca zapis gry
+				gameStage = stage::ZapiszGre;
 				break;
-
+			}
+			if ((x == 2) && (event.key.code == Keyboard::Enter))
+			{
+				//komenda otwierajaca wczytanie gry
+				gameStage = stage::WczytajGre;
+				break;
+			}
+			if ((x == 3) && (event.key.code == Keyboard::Enter))
+			{
+				//komenda otwierajaca Ranking
+				gameStage = stage::Ranking;
+				break;
+			}
+			if ((x == 4) && (event.key.code == Keyboard::Enter))
+			{
+				//komenda otwieraj¹ca opis
+				gameStage = stage::opis;
+				break;
+			}
+			if ((x == 5) && (event.key.code == Keyboard::Enter))
+			{
+				//komenda zamykaj¹ca gre
+				window.close();
+				break;
+			}
 		}
+		break;
+		}
+		case stage::gra:
+			if ((Keyboard::isKeyPressed(Keyboard::Escape)) && (gameStage == gra))
+			{
+				gameStage = stage::menu;
+				cout << "Gamestage =" << gameStage << " \n";
+			}
+			break;
+		case stage::ZapiszGre:
+			if ((Keyboard::isKeyPressed(Keyboard::Escape)) && (gameStage == ZapiszGre))
+			{
+				gameStage = stage::menu;
+				cout << "Gamestage =" << gameStage << " \n";
+			}
+			break;
+		case stage::WczytajGre:
+			if ((Keyboard::isKeyPressed(Keyboard::Escape)) && (gameStage == WczytajGre))
+			{
+				gameStage = stage::menu;
+				cout << "Gamestage =" << gameStage << " \n";
+			}
+			break;
+		case stage::Ranking:
+			if ((Keyboard::isKeyPressed(Keyboard::Escape)) && (gameStage == Ranking))
+			{
+				gameStage = stage::menu;
+				cout << "Gamestage =" << gameStage << " \n";
+			}
+			break;
+		case stage::opis:
+			if ((Keyboard::isKeyPressed(Keyboard::Escape)) && (gameStage == opis))
+			{
+				gameStage = stage::menu;
+				cout << "Gamestage =" << gameStage << " \n";
+			}
+			break;
+
+	}
 	}
 }
 
@@ -179,16 +211,32 @@ void Game::updateEvent(Event& event, RenderWindow& window,MainMenu& mainMenu, St
 	case stage::gra:
 		StageControl(event,window, mainMenu,starship);
 		break;
+	case stage::ZapiszGre:
+		StageControl(event, window, mainMenu, starship);
+		break;
+	case stage::WczytajGre:
+		StageControl(event, window, mainMenu, starship);
+		break;
+	case stage::Ranking:
+		StageControl(event, window, mainMenu, starship);
+		break;
+	case stage::opis:
+		StageControl(event, window, mainMenu, starship);
+		break;
 	case stage::KoniecGry:
+		StageControl(event, window, mainMenu, starship);
 		break;
 	}
 }// funkcje odpowiedzialne za poruszanie sie statkiem	
 void Game::update(RenderWindow& window, MainMenu& mainMenu, Starship& starship, Enemy& enemy)
-{	switch(gameStage)
+{
+	switch (gameStage)
+	{
+	case stage::menu:
+		break;
 	case stage::gra:
-	{	
-	AsteroidMove();
-	enemy.MovePosition();
+		AsteroidMove();
+		enemy.MovePosition();
 		if (Keyboard::isKeyPressed(Keyboard::Up))
 		{
 			starship.MoveUp();
@@ -205,12 +253,22 @@ void Game::update(RenderWindow& window, MainMenu& mainMenu, Starship& starship, 
 		{
 			starship.MoveRight();
 		}
-		
+		break;
+	case stage::ZapiszGre:
+		break;
+	case stage::WczytajGre:
+		break;
+	case stage::Ranking:
+		break;
+	case stage::opis:
+		break;
+	case stage::KoniecGry:
+		break;
 	}
 }
 
 //funkcja okreœlaj¹ca co w danym czasie jest renderowane
-void Game::render(RenderWindow& window, MainMenu& mainMenu, Starship& starship, Enemy& enemy)
+void Game::render(RenderWindow& window, MainMenu& mainMenu, Starship& starship, Enemy& enemy,Opis& opis)
 {
     window.clear(Color::Green);
   
@@ -227,8 +285,20 @@ void Game::render(RenderWindow& window, MainMenu& mainMenu, Starship& starship, 
 		enemy.DrawEnemy(window);
 		starship.Drawstarship(window);
 		break;
+	case stage::ZapiszGre:
+		DrawBackground(window);
+		break;
+	case stage::WczytajGre:
+		DrawBackground(window);
+		break;
+	case stage::Ranking:
+		DrawBackground(window);
+		break;
+	case stage::opis:
+		DrawBackground(window);
+		opis.DrawOpis(window);
+		break;
 	case stage::KoniecGry:
-
 		break;
 	}
 
