@@ -1,7 +1,7 @@
 #pragma once
 #include "biblioteka.h"
 
-#define Max_main_menu 6
+#define MainMenuTextNumber 6
 
 
 class MainMenu
@@ -15,7 +15,8 @@ public:
 	void MoveDown();
 	void draw(RenderWindow& window);
 
-	int MainMenuPressed() {
+	int MainMenuPressed() 
+	{
 		return MainMenuSelected;
 	}
 	~MainMenu();
@@ -26,6 +27,6 @@ private:
 	int CurrentlySelected = 0;
 	int MainMenuSelected = 0;
 	Font font;
-	Text mainMenu[Max_main_menu];
+	Text mainMenu[MainMenuTextNumber];
 	
 };

@@ -1,58 +1,18 @@
-﻿  Enemy.cpp
-F:\infa-projekt\InfaProjekt_2022-2023\Enemy.cpp(12,14): warning C4244: "=": konwersja z "int" do "float", możliwa utrata danych
-F:\infa-projekt\InfaProjekt_2022-2023\Enemy.cpp(46,20): warning C4244: "+=": konwersja z "double" do "float", możliwa utrata danych
-F:\infa-projekt\InfaProjekt_2022-2023\Enemy.cpp(48,20): warning C4244: "+=": konwersja z "double" do "float", możliwa utrata danych
-F:\infa-projekt\InfaProjekt_2022-2023\Enemy.cpp(50,20): warning C4244: "+=": konwersja z "double" do "float", możliwa utrata danych
-  MainMenu.cpp
-F:\infa-projekt\InfaProjekt_2022-2023\MainMenu.cpp(16,80): warning C4244: "argument": konwersja z "int" do "float", możliwa utrata danych
-F:\infa-projekt\InfaProjekt_2022-2023\MainMenu.cpp(23,91): warning C4244: "argument": konwersja z "int" do "float", możliwa utrata danych
-F:\infa-projekt\InfaProjekt_2022-2023\MainMenu.cpp(29,91): warning C4244: "argument": konwersja z "int" do "float", możliwa utrata danych
-F:\infa-projekt\InfaProjekt_2022-2023\MainMenu.cpp(35,91): warning C4244: "argument": konwersja z "int" do "float", możliwa utrata danych
-F:\infa-projekt\InfaProjekt_2022-2023\MainMenu.cpp(41,91): warning C4244: "argument": konwersja z "int" do "float", możliwa utrata danych
-F:\infa-projekt\InfaProjekt_2022-2023\MainMenu.cpp(47,91): warning C4244: "argument": konwersja z "int" do "float", możliwa utrata danych
-  Opis.cpp
-F:\infa-projekt\InfaProjekt_2022-2023\Opis.cpp(18,32): warning C4244: "argument": konwersja z "int" do "float", możliwa utrata danych
-F:\infa-projekt\InfaProjekt_2022-2023\Opis.cpp(18,27): warning C4244: "argument": konwersja z "int" do "float", możliwa utrata danych
-F:\infa-projekt\InfaProjekt_2022-2023\Opis.cpp(24,91): warning C4244: "argument": konwersja z "int" do "float", możliwa utrata danych
-F:\infa-projekt\InfaProjekt_2022-2023\Opis.cpp(30,91): warning C4244: "argument": konwersja z "int" do "float", możliwa utrata danych
-F:\infa-projekt\InfaProjekt_2022-2023\Opis.cpp(36,91): warning C4244: "argument": konwersja z "int" do "float", możliwa utrata danych
-F:\infa-projekt\InfaProjekt_2022-2023\Opis.cpp(42,91): warning C4244: "argument": konwersja z "int" do "float", możliwa utrata danych
-F:\infa-projekt\InfaProjekt_2022-2023\Opis.cpp(48,91): warning C4244: "argument": konwersja z "int" do "float", możliwa utrata danych
-F:\infa-projekt\InfaProjekt_2022-2023\Opis.cpp(54,91): warning C4244: "argument": konwersja z "int" do "float", możliwa utrata danych
-F:\infa-projekt\InfaProjekt_2022-2023\Opis.cpp(60,103): warning C4244: "argument": konwersja z "int" do "float", możliwa utrata danych
-F:\infa-projekt\InfaProjekt_2022-2023\Opis.cpp(66,91): warning C4244: "argument": konwersja z "int" do "float", możliwa utrata danych
-F:\infa-projekt\InfaProjekt_2022-2023\Opis.cpp(72,91): warning C4244: "argument": konwersja z "int" do "float", możliwa utrata danych
-  Starship.cpp
-F:\infa-projekt\InfaProjekt_2022-2023\Starship.cpp(15,34): warning C4305: "argument": obcięcie z "double" do "float"
-F:\infa-projekt\InfaProjekt_2022-2023\Starship.cpp(67,31): warning C4244: "argument": konwersja z "int" do "float", możliwa utrata danych
-F:\infa-projekt\InfaProjekt_2022-2023\Starship.cpp(67,29): warning C4244: "argument": konwersja z "int" do "float", możliwa utrata danych
-  Źródło.cpp
-F:\infa-projekt\InfaProjekt_2022-2023\Źródło.cpp(16,15): warning C4244: "argument": konwersja z "time_t" do "unsigned int", możliwa utrata danych
-F:\infa-projekt\InfaProjekt_2022-2023\Źródło.cpp(23,59): warning C4244: "argument": konwersja z "T" do "float", możliwa utrata danych
-          with
-          [
-              T=unsigned int
-          ]
-F:\infa-projekt\InfaProjekt_2022-2023\Źródło.cpp(23,39): warning C4244: "argument": konwersja z "T" do "float", możliwa utrata danych
-          with
-          [
-              T=unsigned int
-          ]
-  game.cpp
-F:\infa-projekt\InfaProjekt_2022-2023\game.cpp(28,27): warning C4305: "argument": obcięcie z "double" do "float"
-F:\infa-projekt\InfaProjekt_2022-2023\game.cpp(34,30): warning C4305: "argument": obcięcie z "double" do "float"
-F:\infa-projekt\InfaProjekt_2022-2023\game.cpp(88,43): warning C4244: "argument": konwersja z "int" do "float", możliwa utrata danych
-F:\infa-projekt\InfaProjekt_2022-2023\game.cpp(88,36): warning C4244: "argument": konwersja z "int" do "float", możliwa utrata danych
-F:\infa-projekt\InfaProjekt_2022-2023\game.cpp(93,43): warning C4244: "argument": konwersja z "int" do "float", możliwa utrata danych
-F:\infa-projekt\InfaProjekt_2022-2023\game.cpp(93,36): warning C4244: "argument": konwersja z "int" do "float", możliwa utrata danych
-F:\infa-projekt\InfaProjekt_2022-2023\game.cpp(98,43): warning C4244: "argument": konwersja z "int" do "float", możliwa utrata danych
-F:\infa-projekt\InfaProjekt_2022-2023\game.cpp(98,36): warning C4244: "argument": konwersja z "int" do "float", możliwa utrata danych
-F:\infa-projekt\InfaProjekt_2022-2023\game.cpp(103,43): warning C4244: "argument": konwersja z "int" do "float", możliwa utrata danych
-F:\infa-projekt\InfaProjekt_2022-2023\game.cpp(103,36): warning C4244: "argument": konwersja z "int" do "float", możliwa utrata danych
-F:\infa-projekt\InfaProjekt_2022-2023\game.cpp(108,43): warning C4244: "argument": konwersja z "int" do "float", możliwa utrata danych
-F:\infa-projekt\InfaProjekt_2022-2023\game.cpp(108,36): warning C4244: "argument": konwersja z "int" do "float", możliwa utrata danych
+﻿  game.cpp
+F:\infa-projekt\InfaProjekt_2022-2023\game.cpp(31,27): warning C4305: "argument": obcięcie z "double" do "float"
+F:\infa-projekt\InfaProjekt_2022-2023\game.cpp(37,30): warning C4305: "argument": obcięcie z "double" do "float"
+F:\infa-projekt\InfaProjekt_2022-2023\game.cpp(91,43): warning C4244: "argument": konwersja z "int" do "float", możliwa utrata danych
+F:\infa-projekt\InfaProjekt_2022-2023\game.cpp(91,36): warning C4244: "argument": konwersja z "int" do "float", możliwa utrata danych
+F:\infa-projekt\InfaProjekt_2022-2023\game.cpp(96,43): warning C4244: "argument": konwersja z "int" do "float", możliwa utrata danych
+F:\infa-projekt\InfaProjekt_2022-2023\game.cpp(96,36): warning C4244: "argument": konwersja z "int" do "float", możliwa utrata danych
+F:\infa-projekt\InfaProjekt_2022-2023\game.cpp(101,43): warning C4244: "argument": konwersja z "int" do "float", możliwa utrata danych
+F:\infa-projekt\InfaProjekt_2022-2023\game.cpp(101,36): warning C4244: "argument": konwersja z "int" do "float", możliwa utrata danych
+F:\infa-projekt\InfaProjekt_2022-2023\game.cpp(106,43): warning C4244: "argument": konwersja z "int" do "float", możliwa utrata danych
+F:\infa-projekt\InfaProjekt_2022-2023\game.cpp(106,36): warning C4244: "argument": konwersja z "int" do "float", możliwa utrata danych
+F:\infa-projekt\InfaProjekt_2022-2023\game.cpp(111,43): warning C4244: "argument": konwersja z "int" do "float", możliwa utrata danych
+F:\infa-projekt\InfaProjekt_2022-2023\game.cpp(111,36): warning C4244: "argument": konwersja z "int" do "float", możliwa utrata danych
   Trwa generowanie kodu
-  3 of 185 functions ( 1.6%) were compiled, the rest were copied from previous compilation.
+  2 of 199 functions ( 1.0%) were compiled, the rest were copied from previous compilation.
     0 functions were new in current compilation
     0 functions had inline decision re-evaluated but remain unchanged
   Zakończono generowanie kodu

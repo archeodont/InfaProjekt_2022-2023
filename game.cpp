@@ -11,17 +11,20 @@ Game::Game()
 		cout << "Nie wykryto pliku arial";
 	}
 
+	//tekst statystyk ilosci HP
 	StarshipHealth.setFont(font);
 	StarshipHealth.setFillColor(Color::White);
 	StarshipHealth.setString("Zycie: " + to_string(SHp));
 	StarshipHealth.setCharacterSize(30);
-	StarshipHealth.setPosition(1280 - StarshipHealth.getLocalBounds().width-20, 20);
+	StarshipHealth.setPosition(1280 - StarshipHealth.getLocalBounds().width-20, 1);
 
+	//tekst statystyk iloœci punktów
 	TimeInGame.setFont(font);
 	TimeInGame.setFillColor(Color::White);
-	TimeInGame.setString("Czas: "+ to_string(time));
+	TimeInGame.setString("Czas: "+ to_string(score));
 	TimeInGame.setCharacterSize(30);
-	TimeInGame.setPosition(1280 - TimeInGame.getLocalBounds().width-64, 60);
+	TimeInGame.setPosition(1280 - TimeInGame.getLocalBounds().width-64, 31);
+	
 	//pobieranie t³a menu
 	MenuTexture.loadFromFile("tlo.png");
 	MenuSprite.setTexture(MenuTexture);
@@ -111,6 +114,7 @@ void Game::AsteroidDraw(RenderWindow& window)
 	}
 }
 
+// funkcja aktualizuj¹ca statystyki
 void Game::updateStatistic()
 {
 	SHp--;
@@ -119,10 +123,9 @@ void Game::updateStatistic()
 	TimeInGame.setString("Score: " + to_string(score));
 }
 
+// funkcja rysuj¹ca statystyki
 void Game::StatisticDraw(RenderWindow& window)
 {
-	
-	
 	window.draw(StarshipHealth);
 	window.draw(TimeInGame);
 }
@@ -245,7 +248,7 @@ void Game::StageControl(Event& event,RenderWindow& window, MainMenu& mainMenu,St
 			{
 				gameStage = stage::gra;
 				cout << "Gamestage =" << gameStage << " \n";
-				Sleep(100);
+				Sleep(250);
 				break;
 			}
 
@@ -256,7 +259,7 @@ void Game::StageControl(Event& event,RenderWindow& window, MainMenu& mainMenu,St
 
 
 // funkcja okreœlaj¹ca pojedyncze sekwencje zmiany pozycji menu,gry,opcji
-void Game::updateEvent(Event& event, RenderWindow& window,MainMenu& mainMenu, Starship& starship)
+void Game::updateEvent(Event& event, RenderWindow& window,MainMenu& mainMenu, Starship& starship, Zapiszgre& zapiszgre,  Wczytajgre& wczytajgre)
 {	
 	//Aktualne zdarzenia
 	switch (gameStage)
@@ -269,9 +272,11 @@ void Game::updateEvent(Event& event, RenderWindow& window,MainMenu& mainMenu, St
 		StageControl(event,window, mainMenu,starship);
 		break;
 	case stage::ZapiszGre:
+		zapiszgre.uploadZapisz(event, window);
 		StageControl(event, window, mainMenu, starship);
 		break;
 	case stage::WczytajGre:
+		wczytajgre.uploadWczytaj(event, window);
 		StageControl(event, window, mainMenu, starship);
 		break;
 	case stage::Ranking:
@@ -288,7 +293,7 @@ void Game::updateEvent(Event& event, RenderWindow& window,MainMenu& mainMenu, St
 		break;
 	}
 }// funkcje odpowiedzialne za poruszanie sie statkiem	
-void Game::update(RenderWindow& window, MainMenu& mainMenu, Starship& starship, Enemy& enemy)
+void Game::update(RenderWindow& window, MainMenu& mainMenu, Starship& starship, Enemy& enemy, Zapiszgre& zapiszgre,  Wczytajgre& wczytajgre)
 {
 	switch (gameStage)
 	{
@@ -328,7 +333,9 @@ void Game::update(RenderWindow& window, MainMenu& mainMenu, Starship& starship, 
 	case stage::KoniecGry:
 		if (Keyboard::isKeyPressed(Keyboard::Return))
 		{
-			window.close();
+			gameStage = stage::menu;
+			SHp = 1000;
+			score = 0;
 		}
 		AsteroidMove();
 		break;
@@ -336,7 +343,7 @@ void Game::update(RenderWindow& window, MainMenu& mainMenu, Starship& starship, 
 }
 
 //funkcja okreœlaj¹ca co w danym czasie jest renderowane
-void Game::render(RenderWindow& window, MainMenu& mainMenu, Starship& starship, Enemy& enemy,Opis& opis)
+void Game::render(RenderWindow& window, MainMenu& mainMenu, Starship& starship, Enemy& enemy,Opis& opis, Zapiszgre& zapiszgre,  Wczytajgre& wczytajgre)
 {
     window.clear(Color::Green);
   
@@ -356,9 +363,11 @@ void Game::render(RenderWindow& window, MainMenu& mainMenu, Starship& starship, 
 		break;
 	case stage::ZapiszGre:
 		DrawBackground(window);
+		zapiszgre.drawZapisz(window);
 		break;
 	case stage::WczytajGre:
 		DrawBackground(window);
+		wczytajgre.drawWczytaj(window);
 		break;
 	case stage::Ranking:
 		DrawBackground(window);

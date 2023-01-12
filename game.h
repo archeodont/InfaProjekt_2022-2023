@@ -24,7 +24,7 @@ private:
 	enum stage{menu,gra,ZapiszGre,WczytajGre,Ranking,opis,KoniecGry,opisWgrze};
 	int gameStage = 0;
 	int score = 0;
-	int SHp = 1000,time;
+	int SHp = 1000;
 	//zmienne asteroid
 	int Ax[20],Ay[20],Ady[20];
 
@@ -39,8 +39,8 @@ public:
 	void AsteroidDraw(RenderWindow& window);
 	void updateStatistic();
 	void StatisticDraw(RenderWindow& window);
-	void render(RenderWindow& window, MainMenu& mainMenu, Starship& starship,Enemy& enemy,Opis& opis);
-	void updateEvent(Event& event, RenderWindow& window, MainMenu& mainMenu,Starship& starship);
-	void update(RenderWindow& window, MainMenu& mainMenu, Starship& starship,Enemy& enemy);
-	
+	void updateEvent(Event& event, RenderWindow& window, MainMenu& mainMenu,Starship& starship, Zapiszgre& zapiszgre,Wczytajgre& wczytajgre);
+	void update(RenderWindow& window, MainMenu& mainMenu, Starship& starship,Enemy& enemy,Zapiszgre& zapiszgre, Wczytajgre& wczytajgre);
+	void render(RenderWindow& window, MainMenu& mainMenu, Starship& starship, Enemy& enemy, Opis& opis, Zapiszgre& zapiszgre, Wczytajgre& wczytajgre);
+
 };

@@ -25,6 +25,9 @@ int main()
     Starship starship;
     Enemy enemy(10);
     Opis opis;
+    Zapiszgre zapiszgre;
+    Wczytajgre wczytajGre;
+    ranking Ranking;
     
     
     //Pętla gry
@@ -42,14 +45,14 @@ int main()
             }
 
             // Funkcja odpowiedzialna za obliczenia oraz obsluge
-            game.updateEvent(event, window, mainMenu,starship);
+            game.updateEvent(event, window, mainMenu,starship,zapiszgre,wczytajGre);
         } 
 
         //funkcja odpowiedzialna za uaktualnianie statystyk w czasie rzeczywistym
-        game.update(window,mainMenu,starship,enemy);
+        game.update(window,mainMenu,starship,enemy,zapiszgre,wczytajGre);
 
         //Funkcja odpowiedzialna za rysowanie okna
-        game.render(window, mainMenu, starship,enemy,opis);
+        game.render(window, mainMenu, starship,enemy,opis,zapiszgre,wczytajGre);
     }
     return 0;
 }

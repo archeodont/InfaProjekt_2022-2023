@@ -62,7 +62,7 @@ MainMenu::~MainMenu()
 // Funkcja draw
 void MainMenu::draw(RenderWindow& window) {
 	
-	for (int i = 0; i < Max_main_menu; i++) {
+	for (int i = 0; i < MainMenuTextNumber; i++) {
 		window.draw(mainMenu[i]);
 	}
 	
@@ -152,9 +152,4 @@ void MainMenu::updateMenu(Event& event, RenderWindow& window)
 				break;
 			}
 		}
-
-	
-   
-
 }
-
