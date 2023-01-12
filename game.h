@@ -4,6 +4,9 @@
 #include "Starship.h"
 #include "Enemy.h"
 #include "Opis.h"
+#include "ZapiszGre.h"
+#include "WczytajGre.h"
+#include "ranking.h"
 
 // klasa wykorzystywana jako silnik gry, przyjmuje i przetwarza wiêkszoœæ danych
 // Odpowiedzialna za renderowanie ekranu oraz uaktualnianie danych np pozycji
@@ -13,11 +16,15 @@ private:
 	// zmienne odpowiadaj¹ce za obrazy
 	Sprite MenuSprite, GameSprite, AsteroidSprite1, AsteroidSprite2, AsteroidSprite3, AsteroidSprite4, AsteroidSprite5;
 	Texture MenuTexture, GameTexture, AsteroidTexture1, AsteroidTexture2, AsteroidTexture3, AsteroidTexture4, AsteroidTexture5;
+	// zmienne odpowiadaj¹ce za statystyki 
+	Text StarshipHealth, TimeInGame;
+	Font font;
+
 	//zmienna stanu gry
-	enum stage{menu,gra,ZapiszGre,WczytajGre,Ranking,opis,KoniecGry};
+	enum stage{menu,gra,ZapiszGre,WczytajGre,Ranking,opis,KoniecGry,opisWgrze};
 	int gameStage = 0;
-	int scores = 0;
-	
+	int score = 0;
+	int SHp = 1000,time;
 	//zmienne asteroid
 	int Ax[20],Ay[20],Ady[20];
 
@@ -30,6 +37,8 @@ public:
 	void StageControl(Event& event,RenderWindow& window ,MainMenu& mainMenu, Starship& starship);
 	void AsteroidMove();
 	void AsteroidDraw(RenderWindow& window);
+	void updateStatistic();
+	void StatisticDraw(RenderWindow& window);
 	void render(RenderWindow& window, MainMenu& mainMenu, Starship& starship,Enemy& enemy,Opis& opis);
 	void updateEvent(Event& event, RenderWindow& window, MainMenu& mainMenu,Starship& starship);
 	void update(RenderWindow& window, MainMenu& mainMenu, Starship& starship,Enemy& enemy);

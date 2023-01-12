@@ -24,7 +24,6 @@ int main()
     Game game;
     Starship starship;
     Enemy enemy(10);
-    Clock EnemyClock;
     Opis opis;
     
     

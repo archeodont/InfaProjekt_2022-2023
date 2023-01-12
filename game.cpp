@@ -1,11 +1,28 @@
 #include "biblioteka.h"
 #include "game.h"
-
+#include "windows.h" 
 
 
 //konstruktor
 Game::Game()
-{	//pobieranie t³a menu
+{	//Tworzenie zmiennych statystyk
+	if (!font.loadFromFile("czcionka.ttf"))
+	{
+		cout << "Nie wykryto pliku arial";
+	}
+
+	StarshipHealth.setFont(font);
+	StarshipHealth.setFillColor(Color::White);
+	StarshipHealth.setString("Zycie: " + to_string(SHp));
+	StarshipHealth.setCharacterSize(30);
+	StarshipHealth.setPosition(1280 - StarshipHealth.getLocalBounds().width-20, 20);
+
+	TimeInGame.setFont(font);
+	TimeInGame.setFillColor(Color::White);
+	TimeInGame.setString("Czas: "+ to_string(time));
+	TimeInGame.setCharacterSize(30);
+	TimeInGame.setPosition(1280 - TimeInGame.getLocalBounds().width-64, 60);
+	//pobieranie t³a menu
 	MenuTexture.loadFromFile("tlo.png");
 	MenuSprite.setTexture(MenuTexture);
 	MenuSprite.setScale(1.7,1);
@@ -94,6 +111,22 @@ void Game::AsteroidDraw(RenderWindow& window)
 	}
 }
 
+void Game::updateStatistic()
+{
+	SHp--;
+	score++;
+	StarshipHealth.setString("Health: " + to_string(SHp));
+	TimeInGame.setString("Score: " + to_string(score));
+}
+
+void Game::StatisticDraw(RenderWindow& window)
+{
+	
+	
+	window.draw(StarshipHealth);
+	window.draw(TimeInGame);
+}
+
 // rysowanie t³a w menu
 void Game::DrawBackground(RenderWindow& window)
 {
@@ -157,10 +190,22 @@ void Game::StageControl(Event& event,RenderWindow& window, MainMenu& mainMenu,St
 		break;
 		}
 		case stage::gra:
+			if (SHp <= 0 )
+			{
+				gameStage = stage::KoniecGry;
+				break;
+			}
 			if ((Keyboard::isKeyPressed(Keyboard::Escape)) && (gameStage == gra))
 			{
 				gameStage = stage::menu;
 				cout << "Gamestage =" << gameStage << " \n";
+				break;
+			}
+			if ((Keyboard::isKeyPressed(Keyboard::F1)) && (gameStage == gra))
+			{
+				gameStage = stage::opisWgrze;
+				cout << "Gamestage =" << gameStage << " \n";
+				break;
 			}
 			break;
 		case stage::ZapiszGre:
@@ -168,6 +213,7 @@ void Game::StageControl(Event& event,RenderWindow& window, MainMenu& mainMenu,St
 			{
 				gameStage = stage::menu;
 				cout << "Gamestage =" << gameStage << " \n";
+				break;
 			}
 			break;
 		case stage::WczytajGre:
@@ -175,6 +221,7 @@ void Game::StageControl(Event& event,RenderWindow& window, MainMenu& mainMenu,St
 			{
 				gameStage = stage::menu;
 				cout << "Gamestage =" << gameStage << " \n";
+				break;
 			}
 			break;
 		case stage::Ranking:
@@ -182,6 +229,7 @@ void Game::StageControl(Event& event,RenderWindow& window, MainMenu& mainMenu,St
 			{
 				gameStage = stage::menu;
 				cout << "Gamestage =" << gameStage << " \n";
+				break;
 			}
 			break;
 		case stage::opis:
@@ -189,8 +237,17 @@ void Game::StageControl(Event& event,RenderWindow& window, MainMenu& mainMenu,St
 			{
 				gameStage = stage::menu;
 				cout << "Gamestage =" << gameStage << " \n";
+				break;
 			}
 			break;
+		case stage::opisWgrze:
+			if ((Keyboard::isKeyPressed(Keyboard::Escape)) && (gameStage == opisWgrze))
+			{
+				gameStage = stage::gra;
+				cout << "Gamestage =" << gameStage << " \n";
+				Sleep(100);
+				break;
+			}
 
 	}
 	}
@@ -223,6 +280,9 @@ void Game::updateEvent(Event& event, RenderWindow& window,MainMenu& mainMenu, St
 	case stage::opis:
 		StageControl(event, window, mainMenu, starship);
 		break;
+	case stage::opisWgrze:
+		StageControl(event, window, mainMenu, starship);
+		break;
 	case stage::KoniecGry:
 		StageControl(event, window, mainMenu, starship);
 		break;
@@ -235,6 +295,7 @@ void Game::update(RenderWindow& window, MainMenu& mainMenu, Starship& starship, 
 	case stage::menu:
 		break;
 	case stage::gra:
+		updateStatistic();
 		AsteroidMove();
 		enemy.MovePosition();
 		if (Keyboard::isKeyPressed(Keyboard::Up))
@@ -262,7 +323,14 @@ void Game::update(RenderWindow& window, MainMenu& mainMenu, Starship& starship, 
 		break;
 	case stage::opis:
 		break;
+	case stage::opisWgrze:
+		break;
 	case stage::KoniecGry:
+		if (Keyboard::isKeyPressed(Keyboard::Return))
+		{
+			window.close();
+		}
+		AsteroidMove();
 		break;
 	}
 }
@@ -284,6 +352,7 @@ void Game::render(RenderWindow& window, MainMenu& mainMenu, Starship& starship, 
 		AsteroidDraw(window);
 		enemy.DrawEnemy(window);
 		starship.Drawstarship(window);
+		StatisticDraw(window);
 		break;
 	case stage::ZapiszGre:
 		DrawBackground(window);
@@ -298,7 +367,18 @@ void Game::render(RenderWindow& window, MainMenu& mainMenu, Starship& starship, 
 		DrawBackground(window);
 		opis.DrawOpis(window);
 		break;
+	case stage::opisWgrze:
+		DrawBackgroundGame(window);
+		AsteroidDraw(window);
+		StatisticDraw(window);
+		enemy.DrawEnemy(window);
+		starship.Drawstarship(window);
+		opis.DrawOpis(window);
+		break;
 	case stage::KoniecGry:
+		DrawBackgroundGame(window);
+		AsteroidDraw(window);
+		StatisticDraw(window);
 		break;
 	}
 

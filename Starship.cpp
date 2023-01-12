@@ -3,15 +3,16 @@
 // po³o¿enie pocz¹tkowe oraz predkosci zmiany po³o¿enia Statku
 void Starship::ZmiennePocz¹tkowe()
 {
-	// iloœæ ¿ycia statku
-	SHp = 500;
-	// iloœæ zadawanych obra¿eñ
-	Dmg = 100;
 	//koordynaty i ich zmienne
 	x = 600;
 	y = 550;
 	dx = 15;
 	dy = 15;
+
+	
+	StarshipTexture.loadFromFile("Starship.png");
+	StarshipSprite.setTexture(StarshipTexture);
+	StarshipSprite.setScale(0.8, 0.8);
 }
 
 //konstruktor
@@ -61,9 +62,7 @@ void Starship::MoveRight()
 //rysowanie statku
 void Starship::Drawstarship(RenderWindow& window)
 {
-	Texture StarshipTexture;
-	StarshipTexture.loadFromFile("Starship.png");
-	Sprite StarshipSprite(StarshipTexture, IntRect(50, 45, 100, 110));
+	StarshipSprite.setTextureRect(IntRect(50, 45, 100, 110));
 
 	StarshipSprite.setPosition(x,y);
 	window.draw(StarshipSprite);
