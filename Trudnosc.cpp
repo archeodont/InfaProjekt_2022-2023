@@ -37,7 +37,6 @@ Trudnosc::~Trudnosc()
 
 }
 
-
 void Trudnosc::drawTrudnosc(RenderWindow& window)
 {
 	for (int i = 0; i < 4; i++)
@@ -74,6 +73,21 @@ void Trudnosc::MoveDownTrudnosc()
 	}
 }
 
+void Trudnosc::Trudnosc1()
+{
+	WybranyPoziomTrudnosci = 3;
+}
+
+void Trudnosc::Trudnosc2()
+{
+	WybranyPoziomTrudnosci = 2;
+}
+
+void Trudnosc::Trudnosc3()
+{
+	WybranyPoziomTrudnosci = 1;
+}
+
 void Trudnosc::uploadTrudnosc(Event& event, RenderWindow& window)
 {
 	switch (event.type)
@@ -93,18 +107,22 @@ void Trudnosc::uploadTrudnosc(Event& event, RenderWindow& window)
 	case Keyboard::Enter:
 		if (WybranyPoziom == 0)
 		{
-			printf("wybrano Poziom trudnosci 1\n");
+			printf("wybrano Poziom trudnosci latwy\n");
+			Trudnosc1();
 			break;
 		}
 		if (WybranyPoziom == 1)
 		{
-			printf("wybrano Poziom trudnosci 2\n");
+			printf("wybrano Poziom trudnosci sredni\n");
+			Trudnosc2();
 			break;
 		}
 		if (WybranyPoziom == 2)
 		{
-			printf("wybrano Poziom trudnosci 3\n");
+			printf("wybrano Poziom trudnosci trudny\n");
+			Trudnosc3();
 			break;
 		}
 	}
 }
+

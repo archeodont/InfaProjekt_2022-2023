@@ -1,6 +1,7 @@
 #pragma once
 #include "biblioteka.h"
 #include "Starship.h"
+#include "Pocisk.h"
 
 class Enemy
 {
@@ -15,6 +16,8 @@ private:
 	Texture EnemyTexture;
 
 public:
+
+	int SumaHp;
 	int dmg;
 	Sprite EnemySprite;
 	void TexturyPocz¹tkowe();
@@ -22,6 +25,6 @@ public:
 	Enemy(int NumberEnemy);
 	~Enemy();
 	void MovePosition();
-	void DrawEnemy(RenderWindow& window, Starship& starship,int gra);
+	void DrawEnemy(RenderWindow& window, Starship& starship,int gra, Pocisk& pocisk);
 
 };

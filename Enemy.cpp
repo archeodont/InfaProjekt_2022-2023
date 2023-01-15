@@ -62,24 +62,49 @@ void Enemy::MovePosition()
 }
 
 // funkcja wyswietlajaca wroga
-void Enemy::DrawEnemy(RenderWindow& window, Starship& starship,int gra)
+void Enemy::DrawEnemy(RenderWindow& window, Starship& starship,int gra,Pocisk& pocisk)
 {
 	xclock++;
 	if (xclock == 8)
 		xclock = 0;
 
 	for (int i = 0; i < 10; i++)
-	{	
-		EnemySprite.setTextureRect(IntRect(181 + xclock * frame, 220, 23, 23));
-		EnemySprite.setPosition(x[i], y[i]);
-		FloatRect rect1 = starship.StarshipSprite.getGlobalBounds();
+	{
+		if (E1Hp[i] > 0)
+		{
+			EnemySprite.setTextureRect(IntRect(181 + xclock * frame, 220, 23, 23));
+			EnemySprite.setPosition(x[i], y[i]);
+		}
 		FloatRect rect2 = EnemySprite.getGlobalBounds();
-		if ((rect1.intersects(rect2))&&gra==1)
+		FloatRect rect1 = starship.StarshipSprite.getGlobalBounds();
+		if ((rect1.intersects(rect2)) && gra == 1)
 		{
 			cout << "zadano dmg \n";
 			dmg++;
 		}
-		window.draw(EnemySprite);
+		for (int k = 0; k < 20; k++)
+		{
+			pocisk.SpritePocisk.setPosition(pocisk.Px[k], pocisk.Py[k]);
+			FloatRect rect3 = pocisk.SpritePocisk.getGlobalBounds();
+			if ((rect3.intersects(rect2)) && gra == 1)
+			{
+				cout << "zadano dmg Wrogowi \n";
+				E1Hp[i] -= 2;
+			}
+		}
+		SumaHp = 0;
+			if (E1Hp[i] < 0)
+				E1Hp[i] = 0;
+				
+			for (int j = 0; j < 10; j++)
+				SumaHp += E1Hp[j];
+
+			if(SumaHp==0)
+				EnemySprite.setPosition(-2000, -2000);
+		if (E1Hp[i] > 0)
+		{
+			window.draw(EnemySprite);
+		}
 	}
 	
 }

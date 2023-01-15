@@ -28,8 +28,8 @@ int main()
     Zapiszgre zapiszgre;
     Wczytajgre wczytajGre;
     Trudnosc trudnosc;
-    
-    
+    Pocisk pocisk(20);
+  
     //Pętla gry
     while (window.isOpen())
     {
@@ -45,14 +45,14 @@ int main()
             }
 
             // Funkcja odpowiedzialna za obliczenia oraz obsluge
-            game.updateEvent(event, window, mainMenu,starship,zapiszgre,wczytajGre,trudnosc);
+            game.updateEvent(event, window, mainMenu,starship,zapiszgre,wczytajGre,trudnosc,pocisk);
         } 
 
         //funkcja odpowiedzialna za uaktualnianie statystyk w czasie rzeczywistym
-        game.update(window,mainMenu,starship,enemy,zapiszgre,wczytajGre,trudnosc);
+        game.update(window,mainMenu,starship,enemy,zapiszgre,wczytajGre,trudnosc,pocisk);
 
         //Funkcja odpowiedzialna za rysowanie okna
-        game.render(window, mainMenu, starship,enemy,opis,zapiszgre,wczytajGre,trudnosc);
+        game.render(window, mainMenu, starship,enemy,opis,zapiszgre,wczytajGre,trudnosc,pocisk);
     }
     return 0;
 } 

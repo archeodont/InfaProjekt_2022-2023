@@ -7,6 +7,7 @@
 #include "ZapiszGre.h"
 #include "WczytajGre.h"
 #include "Trudnosc.h"
+#include "Pocisk.h"
 
 // klasa wykorzystywana jako silnik gry, przyjmuje i przetwarza wiêkszoœæ danych
 // Odpowiedzialna za renderowanie ekranu oraz uaktualnianie danych np pozycji
@@ -40,8 +41,8 @@ public:
 	void AsteroidDraw(RenderWindow& window);
 	void updateStatistic();
 	void StatisticDraw(RenderWindow& window);
-	void updateEvent(Event& event, RenderWindow& window, MainMenu& mainMenu,Starship& starship, Zapiszgre& zapiszgre,Wczytajgre& wczytajgre,Trudnosc& trudnosc);
-	void update(RenderWindow& window, MainMenu& mainMenu, Starship& starship,Enemy& enemy,Zapiszgre& zapiszgre, Wczytajgre& wczytajgre, Trudnosc& trudnosc);
-	void render(RenderWindow& window, MainMenu& mainMenu, Starship& starship, Enemy& enemy, Opis& opis, Zapiszgre& zapiszgre, Wczytajgre& wczytajgre, Trudnosc& trudnosc);
+	void updateEvent(Event& event, RenderWindow& window, MainMenu& mainMenu,Starship& starship, Zapiszgre& zapiszgre,Wczytajgre& wczytajgre,Trudnosc& trudnosc, Pocisk& pocisk);
+	void update(RenderWindow& window, MainMenu& mainMenu, Starship& starship,Enemy& enemy,Zapiszgre& zapiszgre, Wczytajgre& wczytajgre, Trudnosc& trudnosc, Pocisk& pocisk);
+	void render(RenderWindow& window, MainMenu& mainMenu, Starship& starship, Enemy& enemy, Opis& opis, Zapiszgre& zapiszgre, Wczytajgre& wczytajgre, Trudnosc& trudnosc, Pocisk& pocisk);
 
 };

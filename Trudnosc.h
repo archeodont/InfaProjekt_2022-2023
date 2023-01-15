@@ -10,6 +10,15 @@ public:
 	void uploadTrudnosc(Event& event, RenderWindow& window);
 	Trudnosc();
 	~Trudnosc();
+	void Trudnosc1();
+	void Trudnosc2();
+	void Trudnosc3();
+	int WybranyPoziomTrudnosci = 3;
+	int WybranypoziomTrudnosci()
+	{
+		return WybranyPoziomTrudnosci;
+	}
+
 private:
 	int WybranyPoziom;
 	Font font;

@@ -14,14 +14,13 @@ public:
 	void MoveLeft();
 	void MoveRight();
 	void Drawstarship(RenderWindow& window);
-	
+	int x, dx, y, dy;
 
 	
 	Sprite StarshipSprite;
 	//funkcje prywatne klasy Starship
 private:
 	Texture StarshipTexture;
-	int x, dx, y, dy;
 	const int width = 1280;
 	const int height = 720;
 };
