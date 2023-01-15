@@ -59,6 +59,8 @@ void Starship::MoveRight()
 	}
 }
 
+
+
 //rysowanie statku
 void Starship::Drawstarship(RenderWindow& window)
 {

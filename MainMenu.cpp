@@ -30,7 +30,7 @@ MainMenu::MainMenu(float width, float hight)
 
 	mainMenu[3].setFont(font);
 	mainMenu[3].setFillColor(Color::Color(120, 80, 0));
-	mainMenu[3].setString("Ranking");
+	mainMenu[3].setString("Trudnosc");
 	mainMenu[3].setCharacterSize(60);
 	mainMenu[3].setPosition(menuwidth - mainMenu[3].getLocalBounds().width / 2.f, menuheight + hdiff * 3);
 
@@ -138,7 +138,7 @@ void MainMenu::updateMenu(Event& event, RenderWindow& window)
 			}
 			if (MainMenuSelected == 3)
 			{
-				printf("wybrano Ranking\n");
+				printf("wybrano Trudnosc\n");
 				break;
 			}
 			if (MainMenuSelected == 4)

@@ -62,7 +62,7 @@ void Enemy::MovePosition()
 }
 
 // funkcja wyswietlajaca wroga
-void Enemy::DrawEnemy(RenderWindow& window)
+void Enemy::DrawEnemy(RenderWindow& window, Starship& starship,int gra)
 {
 	xclock++;
 	if (xclock == 8)
@@ -72,10 +72,19 @@ void Enemy::DrawEnemy(RenderWindow& window)
 	{	
 		EnemySprite.setTextureRect(IntRect(181 + xclock * frame, 220, 23, 23));
 		EnemySprite.setPosition(x[i], y[i]);
+		FloatRect rect1 = starship.StarshipSprite.getGlobalBounds();
+		FloatRect rect2 = EnemySprite.getGlobalBounds();
+		if ((rect1.intersects(rect2))&&gra==1)
+		{
+			cout << "zadano dmg \n";
+			dmg++;
+		}
 		window.draw(EnemySprite);
 	}
 	
 }
+
+
 
 
 

@@ -6,7 +6,7 @@
 #include "Opis.h"
 #include "ZapiszGre.h"
 #include "WczytajGre.h"
-#include "ranking.h"
+#include "Trudnosc.h"
 
 // klasa wykorzystywana jako silnik gry, przyjmuje i przetwarza wiêkszoœæ danych
 // Odpowiedzialna za renderowanie ekranu oraz uaktualnianie danych np pozycji
@@ -21,10 +21,11 @@ private:
 	Font font;
 
 	//zmienna stanu gry
-	enum stage{menu,gra,ZapiszGre,WczytajGre,Ranking,opis,KoniecGry,opisWgrze};
+	enum stage{menu,gra,ZapiszGre,WczytajGre,TrudnoscGry,opis,KoniecGry,opisWgrze};
 	int gameStage = 0;
 	int score = 0;
-	int SHp = 1000;
+	int SHp = 1001;
+	int MaxSHp = 1001;
 	//zmienne asteroid
 	int Ax[20],Ay[20],Ady[20];
 
@@ -39,8 +40,8 @@ public:
 	void AsteroidDraw(RenderWindow& window);
 	void updateStatistic();
 	void StatisticDraw(RenderWindow& window);
-	void updateEvent(Event& event, RenderWindow& window, MainMenu& mainMenu,Starship& starship, Zapiszgre& zapiszgre,Wczytajgre& wczytajgre);
-	void update(RenderWindow& window, MainMenu& mainMenu, Starship& starship,Enemy& enemy,Zapiszgre& zapiszgre, Wczytajgre& wczytajgre);
-	void render(RenderWindow& window, MainMenu& mainMenu, Starship& starship, Enemy& enemy, Opis& opis, Zapiszgre& zapiszgre, Wczytajgre& wczytajgre);
+	void updateEvent(Event& event, RenderWindow& window, MainMenu& mainMenu,Starship& starship, Zapiszgre& zapiszgre,Wczytajgre& wczytajgre,Trudnosc& trudnosc);
+	void update(RenderWindow& window, MainMenu& mainMenu, Starship& starship,Enemy& enemy,Zapiszgre& zapiszgre, Wczytajgre& wczytajgre, Trudnosc& trudnosc);
+	void render(RenderWindow& window, MainMenu& mainMenu, Starship& starship, Enemy& enemy, Opis& opis, Zapiszgre& zapiszgre, Wczytajgre& wczytajgre, Trudnosc& trudnosc);
 
 };
