@@ -24,7 +24,35 @@ Game::Game()
 	TimeInGame.setString("Czas: "+ to_string(score));
 	TimeInGame.setCharacterSize(30);
 	TimeInGame.setPosition(1270 - TimeInGame.getLocalBounds().width-64, 31);
+
+	//tekst Konca gry
+	EndGame[0].setFont(font);
+	EndGame[0].setFillColor(Color::White);
+	EndGame[0].setString("PRZEGRANA!");
+	EndGame[0].setCharacterSize(200);
+	EndGame[0].setPosition(640 - EndGame[0].getLocalBounds().width/2, 200);
 	
+	//tekst pod konce Gry
+	EndGame[1].setFont(font);
+	EndGame[1].setFillColor(Color::White);
+	EndGame[1].setString("Kliknij ENTER by wyjsc");
+	EndGame[1].setCharacterSize(50);
+	EndGame[1].setPosition(640 - EndGame[1].getLocalBounds().width/2 , 450);
+
+	//tekst wygranej
+	Victory[0].setFont(font);
+	Victory[0].setFillColor(Color::White);
+	Victory[0].setString("WYGRANA!");
+	Victory[0].setCharacterSize(200);
+	Victory[0].setPosition(640 - Victory[0].getLocalBounds().width/2, 200);
+
+	//podtekst wygranej
+	Victory[1].setFont(font);
+	Victory[1].setFillColor(Color::White);
+	Victory[1].setString("Kliknij ENTER by wyjsc");
+	Victory[1].setCharacterSize(50);
+	Victory[1].setPosition(640 - Victory[1].getLocalBounds().width/2, 450);
+
 	//pobieranie t³a menu
 	MenuTexture.loadFromFile("tlo.png");
 	MenuSprite.setTexture(MenuTexture);
@@ -57,7 +85,7 @@ Game::Game()
 	{
 		Ax[i] = rand() % 1200;
 		Ay[i] = -rand() % 400;
-		Ady[i] = rand() % 10;
+		Ady[i] = rand() % 10+1;
 	}
 }
 
@@ -308,6 +336,8 @@ void Game::update(RenderWindow& window, MainMenu& mainMenu, Starship& starship, 
 			SHp=MaxSHp - enemy.dmg;
 		updateStatistic();
 		pocisk.uploadPocisk();
+		if (enemy.ZeroEnemy() == 0)
+			gameStage = stage::Wygrana;
 		AsteroidMove();
 		enemy.MovePosition();
 		if (Keyboard::isKeyPressed(Keyboard::Up))
@@ -346,21 +376,29 @@ void Game::update(RenderWindow& window, MainMenu& mainMenu, Starship& starship, 
 		}
 		break;
 	case stage::opis:
+		color = Color(120, 80, 0);
 		break;
 	case stage::opisWgrze:
+		color = Color::White;
 		break;
 	case stage::KoniecGry:
 		if (Keyboard::isKeyPressed(Keyboard::Return))
 		{
-			gameStage = stage::menu;
-			SHp = 1001;
-			MaxSHp = 1001;
-			score = 0;
+			window.close();
+		}
+		AsteroidMove();
+		break;
+	case stage::Wygrana:
+		if (Keyboard::isKeyPressed(Keyboard::Return))
+		{
+			window.close();
 		}
 		AsteroidMove();
 		break;
 	}
+
 }
+
 
 //funkcja okreœlaj¹ca co w danym czasie jest renderowane
 void Game::render(RenderWindow& window, MainMenu& mainMenu, Starship& starship, Enemy& enemy,Opis& opis, Zapiszgre& zapiszgre,  Wczytajgre& wczytajgre, Trudnosc& trudnosc, Pocisk& pocisk)
@@ -396,7 +434,7 @@ void Game::render(RenderWindow& window, MainMenu& mainMenu, Starship& starship, 
 		break;
 	case stage::opis:
 		DrawBackground(window);
-		opis.DrawOpis(window);
+		opis.DrawOpis(window,color,0);
 		break;
 	case stage::opisWgrze:
 		DrawBackgroundGame(window);
@@ -405,13 +443,21 @@ void Game::render(RenderWindow& window, MainMenu& mainMenu, Starship& starship, 
 		StatisticDraw(window);
 		enemy.DrawEnemy(window,starship,0,pocisk);
 		starship.Drawstarship(window);
-		opis.DrawOpis(window);
+		opis.DrawOpis(window,color,1);
 		break;
 	case stage::KoniecGry:
 		DrawBackgroundGame(window);
 		AsteroidDraw(window);
+		window.draw(EndGame[0]);
+		window.draw(EndGame[1]);
 		StatisticDraw(window);
 		break;
+	case stage::Wygrana:
+		DrawBackgroundGame(window);
+		AsteroidDraw(window);
+		window.draw(Victory[0]);
+		window.draw(Victory[1]);
+		StatisticDraw(window);
 	}
 
     window.display();

@@ -14,7 +14,7 @@ public:
 	Opis();
 	~Opis();
 	void ZamknijOpis();
-	void DrawOpis(RenderWindow& window);
+	void DrawOpis(RenderWindow& window, Color& color,int move);
 
 };
 

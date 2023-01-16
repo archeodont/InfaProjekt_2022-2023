@@ -67,7 +67,8 @@ void Pocisk::SummonPocisk(Starship& starship)
 	}
 }
 
-void Pocisk::SendAwayPocisk()
+void Pocisk::SendAwayPocisk(int nr)
 {
-
+	Px[nr] = -300;
+	Py[nr] = -300;
 }

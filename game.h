@@ -18,17 +18,18 @@ private:
 	Sprite MenuSprite, GameSprite, AsteroidSprite1, AsteroidSprite2, AsteroidSprite3, AsteroidSprite4, AsteroidSprite5;
 	Texture MenuTexture, GameTexture, AsteroidTexture1, AsteroidTexture2, AsteroidTexture3, AsteroidTexture4, AsteroidTexture5;
 	// zmienne odpowiadaj¹ce za statystyki 
-	Text StarshipHealth, TimeInGame;
+	Text StarshipHealth, TimeInGame,EndGame[2],Victory[2];
 	Font font;
 
 	//zmienna stanu gry
-	enum stage{menu,gra,ZapiszGre,WczytajGre,TrudnoscGry,opis,KoniecGry,opisWgrze};
+	enum stage{menu,gra,ZapiszGre,WczytajGre,TrudnoscGry,opis,KoniecGry,opisWgrze,Wygrana};
 	int gameStage = 0;
 	int score = 0;
 	int SHp = 1001;
 	int MaxSHp = 1001;
 	//zmienne asteroid
 	int Ax[20],Ay[20],Ady[20];
+	Color color;
 
 public:
 	

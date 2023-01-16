@@ -18,7 +18,7 @@ public:
 	~Pocisk();
 	void DrawPocisk(RenderWindow& window);
 	void SummonPocisk(Starship& starship);
-	void SendAwayPocisk();
+	void SendAwayPocisk(int nr);
 
 	int WybranyPocisk = 0;
 

@@ -17,7 +17,7 @@ private:
 
 public:
 
-	int SumaHp;
+	int SumaHp=1;
 	int dmg;
 	Sprite EnemySprite;
 	void TexturyPocz¹tkowe();
@@ -26,5 +26,6 @@ public:
 	~Enemy();
 	void MovePosition();
 	void DrawEnemy(RenderWindow& window, Starship& starship,int gra, Pocisk& pocisk);
+	int ZeroEnemy();
 
 };
