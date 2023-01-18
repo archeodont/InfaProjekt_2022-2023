@@ -4,6 +4,8 @@
 class Zapiszgre
 {
 public:
+	Clock clockZapis;
+	Time timeZapis;
 
 	void drawZapisz(RenderWindow& window);
 	void MoveUpZapisz();
@@ -11,7 +13,14 @@ public:
 	void uploadZapisz(Event& event, RenderWindow& window);
 	Zapiszgre();
 	~Zapiszgre();
-
+	int ZapisPressed()
+	{
+		return WybranyZapis;
+	}
+	void ClockRestart();
+	int ClockTime();
+	void DownloadDataToSave(int EHp[10],int SSHp,int SSscore,string filename);
+	
 private:
 
 

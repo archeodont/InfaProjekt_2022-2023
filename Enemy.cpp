@@ -8,7 +8,7 @@ void Enemy::ZmiennePoczatkowe(int NumberEnemy)
 	int i = 0;
 	for ( i; i < NumberEnemy; i++)
 	{
-		E1Hp[i] = 101;
+		E1Hp[i] = 99;
 		x[i] = -50 - i * 200;
 		y[i] = 0;
 		dx[i] = 10;
@@ -96,6 +96,7 @@ void Enemy::DrawEnemy(RenderWindow& window, Starship& starship,int gra,Pocisk& p
 				cout << "zadano dmg Wrogowi \n";
 				E1Hp[i] -= 10;
 				pocisk.SendAwayPocisk(k);
+				AllDMG += 10;
 			}
 		}
 		SumaHp = 0;

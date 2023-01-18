@@ -15,7 +15,9 @@ public:
 	void MoveRight();
 	void Drawstarship(RenderWindow& window);
 	int x, dx, y, dy;
-
+	int score = 0;
+	int SHp = 1001;
+	int MaxSHp = 1001;
 	
 	Sprite StarshipSprite;
 	//funkcje prywatne klasy Starship

@@ -32,9 +32,17 @@ Wczytajgre::Wczytajgre()
 	WybranyWczytaj = 0;
 }
 
-Wczytajgre::~Wczytajgre()
-{
 
+
+void Wczytajgre::DownloadDataToGame(string filename,Starship& starship,Enemy& enemy)
+{
+	ifstream inFile;
+	inFile.open(filename);
+	for (int i = 0; i < 10; i++) {
+		inFile >> enemy.E1Hp[i];
+	}
+	inFile >> starship.SHp >> starship.score;
+	inFile.close();
 }
 
 void Wczytajgre::drawWczytaj(RenderWindow& window)
@@ -73,6 +81,12 @@ void Wczytajgre::MoveDownWczytaj()
 	}
 }
 
+Wczytajgre::~Wczytajgre()
+{
+	
+}
+
+
 void Wczytajgre::uploadWczytaj(Event& event, RenderWindow& window)
 {
 	switch (event.type)
@@ -87,27 +101,6 @@ void Wczytajgre::uploadWczytaj(Event& event, RenderWindow& window)
 		if (event.key.code == Keyboard::Down)
 		{
 			MoveDownWczytaj();
-			break;
-		}
-	case Keyboard::Enter:
-		if (WybranyWczytaj == 0)
-		{
-			printf("Wczytano zapis 1\n");
-			break;
-		}
-		if (WybranyWczytaj == 1)
-		{
-			printf("Wczytano zapis 2\n");
-			break;
-		}
-		if (WybranyWczytaj == 2)
-		{
-			printf("Wczytano zapis 3\n");
-			break;
-		}
-		if (WybranyWczytaj == 3)
-		{
-			printf("Wczytano zapis 4\n");
 			break;
 		}
 	}

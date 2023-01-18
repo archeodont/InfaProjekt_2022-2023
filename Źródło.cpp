@@ -21,8 +21,8 @@ int main()
     
     //wywołanie wszystkich klas
     MainMenu mainMenu(window.getSize().x, window.getSize().y);
-    Game game;
     Starship starship;
+    Game game(starship);
     Enemy enemy(10);
     Opis opis;
     Zapiszgre zapiszgre;
@@ -45,7 +45,7 @@ int main()
             }
 
             // Funkcja odpowiedzialna za obliczenia oraz obsluge
-            game.updateEvent(event, window, mainMenu,starship,zapiszgre,wczytajGre,trudnosc,pocisk);
+            game.updateEvent(event, window, mainMenu,starship,zapiszgre,wczytajGre,trudnosc,pocisk,enemy);
         } 
 
         //funkcja odpowiedzialna za uaktualnianie statystyk w czasie rzeczywistym

@@ -8,7 +8,7 @@ class Enemy
 
 private:
 	//zmienne pocz¹tkowe
-	int E1Hp[10];
+	
 	float x[10], y[10], dx[10], dy[10];
 	int frame = 24;
 	int xclock = 0;
@@ -17,8 +17,9 @@ private:
 
 public:
 
+	int E1Hp[10];
 	int SumaHp=1;
-	int dmg;
+	int dmg,AllDMG = 0;
 	Sprite EnemySprite;
 	void TexturyPocz¹tkowe();
 	void ZmiennePoczatkowe(int NumberEnemy);
@@ -27,5 +28,8 @@ public:
 	void MovePosition();
 	void DrawEnemy(RenderWindow& window, Starship& starship,int gra, Pocisk& pocisk);
 	int ZeroEnemy();
-
+	int DMGdealtToEnemy()
+	{
+		return AllDMG;
+	}
 };

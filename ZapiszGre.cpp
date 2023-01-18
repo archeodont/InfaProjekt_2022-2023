@@ -37,6 +37,30 @@ Zapiszgre::~Zapiszgre()
 
 }
 
+void Zapiszgre::ClockRestart()
+{
+	clockZapis.restart();	
+}
+
+int Zapiszgre::ClockTime()
+{
+	timeZapis = clockZapis.getElapsedTime();
+	return timeZapis.asMilliseconds();
+}
+
+void Zapiszgre::DownloadDataToSave(int EHp[10], int SSHp, int SSscore, string filename)
+{
+	ofstream outFile;
+	outFile.open(filename);
+	for (int i = 0; i < 10; i++)
+	{
+		outFile << EHp[i] << "";
+	}
+	outFile << SSHp << "" << SSscore << endl;
+	outFile.close();
+}
+
+
 
 void Zapiszgre::drawZapisz(RenderWindow& window)
 {
@@ -88,27 +112,6 @@ void Zapiszgre::uploadZapisz(Event& event, RenderWindow& window)
 		if (event.key.code == Keyboard::Down)
 		{
 			MoveDownZapisz();
-			break;
-		}
-	case Keyboard::Enter:
-		if (WybranyZapis == 0)
-		{
-			printf("wybrano zapis 1\n");
-			break;
-		}
-		if (WybranyZapis == 1)
-		{
-			printf("wybrano zapis 2\n");
-			break;
-		}
-		if (WybranyZapis == 2)
-		{
-			printf("wybrano zapis 3\n");
-			break;
-		}
-		if (WybranyZapis == 3)
-		{
-			printf("wybrano zapis 4\n");
 			break;
 		}
 	}

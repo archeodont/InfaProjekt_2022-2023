@@ -24,25 +24,23 @@ private:
 	//zmienna stanu gry
 	enum stage{menu,gra,ZapiszGre,WczytajGre,TrudnoscGry,opis,KoniecGry,opisWgrze,Wygrana};
 	int gameStage = 0;
-	int score = 0;
-	int SHp = 1001;
-	int MaxSHp = 1001;
+	
 	//zmienne asteroid
 	int Ax[20],Ay[20],Ady[20];
 	Color color;
 
 public:
 	
-	Game();
+	Game(Starship& starship);
 	~Game();
 	void DrawBackground(RenderWindow& window);
 	void DrawBackgroundGame(RenderWindow& window);
 	void StageControl(Event& event,RenderWindow& window ,MainMenu& mainMenu, Starship& starship);
 	void AsteroidMove();
 	void AsteroidDraw(RenderWindow& window);
-	void updateStatistic();
+	void updateStatistic(Starship& starship);
 	void StatisticDraw(RenderWindow& window);
-	void updateEvent(Event& event, RenderWindow& window, MainMenu& mainMenu,Starship& starship, Zapiszgre& zapiszgre,Wczytajgre& wczytajgre,Trudnosc& trudnosc, Pocisk& pocisk);
+	void updateEvent(Event& event, RenderWindow& window, MainMenu& mainMenu,Starship& starship, Zapiszgre& zapiszgre,Wczytajgre& wczytajgre,Trudnosc& trudnosc, Pocisk& pocisk, Enemy& enemy);
 	void update(RenderWindow& window, MainMenu& mainMenu, Starship& starship,Enemy& enemy,Zapiszgre& zapiszgre, Wczytajgre& wczytajgre, Trudnosc& trudnosc, Pocisk& pocisk);
 	void render(RenderWindow& window, MainMenu& mainMenu, Starship& starship, Enemy& enemy, Opis& opis, Zapiszgre& zapiszgre, Wczytajgre& wczytajgre, Trudnosc& trudnosc, Pocisk& pocisk);
 

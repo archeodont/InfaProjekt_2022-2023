@@ -1,5 +1,7 @@
 #pragma once
 #include "biblioteka.h"
+#include "Starship.h"
+#include "Enemy.h"
 
 class Wczytajgre
 {
@@ -11,6 +13,11 @@ public:
 	void uploadWczytaj(Event& event, RenderWindow& window);
 	Wczytajgre();
 	~Wczytajgre();
+	void DownloadDataToGame(string filename, Starship& starship, Enemy& enemy);
+	int WczytajPressed()
+	{
+		return WybranyWczytaj;
+	}
 
 private:
 

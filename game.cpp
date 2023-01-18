@@ -4,7 +4,7 @@
 
 
 //konstruktor
-Game::Game()
+Game::Game(Starship& starship)
 {	//Tworzenie zmiennych statystyk
 	if (!font.loadFromFile("czcionka.ttf"))
 	{
@@ -14,14 +14,14 @@ Game::Game()
 	//tekst statystyk ilosci HP
 	StarshipHealth.setFont(font);
 	StarshipHealth.setFillColor(Color::White);
-	StarshipHealth.setString("Zycie: " + to_string(SHp));
+	StarshipHealth.setString("Zycie: " + to_string(starship.SHp));
 	StarshipHealth.setCharacterSize(30);
 	StarshipHealth.setPosition(1270 - StarshipHealth.getLocalBounds().width-20, 1);
 
 	//tekst statystyk iloœci punktów
 	TimeInGame.setFont(font);
 	TimeInGame.setFillColor(Color::White);
-	TimeInGame.setString("Czas: "+ to_string(score));
+	TimeInGame.setString("Czas: "+ to_string(starship.score));
 	TimeInGame.setCharacterSize(30);
 	TimeInGame.setPosition(1270 - TimeInGame.getLocalBounds().width-64, 31);
 
@@ -145,10 +145,10 @@ void Game::AsteroidDraw(RenderWindow& window)
 
 
 // funkcja aktualizuj¹ca statystyki
-void Game::updateStatistic()
+void Game::updateStatistic(Starship& starship)
 {
-	StarshipHealth.setString("Health: " + to_string(SHp));
-	TimeInGame.setString("Score: " + to_string(score));
+	StarshipHealth.setString("Health: " + to_string(starship.SHp));
+	TimeInGame.setString("Score: " + to_string(starship.score));
 }
 
 // funkcja rysuj¹ca statystyki
@@ -221,7 +221,7 @@ void Game::StageControl(Event& event,RenderWindow& window, MainMenu& mainMenu,St
 		break;
 		}
 		case stage::gra:
-			if (SHp <= 0 )
+			if (starship.SHp <= 0 )
 			{
 				gameStage = stage::KoniecGry;
 				break;
@@ -240,6 +240,8 @@ void Game::StageControl(Event& event,RenderWindow& window, MainMenu& mainMenu,St
 			}
 			break;
 		case stage::ZapiszGre:
+	
+
 			if ((Keyboard::isKeyPressed(Keyboard::Escape)) && (gameStage == ZapiszGre))
 			{
 				gameStage = stage::menu;
@@ -287,14 +289,18 @@ void Game::StageControl(Event& event,RenderWindow& window, MainMenu& mainMenu,St
 
 
 // funkcja okreœlaj¹ca pojedyncze sekwencje zmiany pozycji menu,gry,opcji
-void Game::updateEvent(Event& event, RenderWindow& window,MainMenu& mainMenu, Starship& starship, Zapiszgre& zapiszgre,  Wczytajgre& wczytajgre, Trudnosc& trudnosc,Pocisk& pocisk)
+void Game::updateEvent(Event& event, RenderWindow& window,MainMenu& mainMenu, Starship& starship, Zapiszgre& zapiszgre,  Wczytajgre& wczytajgre, Trudnosc& trudnosc,Pocisk& pocisk,Enemy& enemy)
 {	
+	int XXx = wczytajgre.WczytajPressed();
+	int XxX = zapiszgre.ZapisPressed();
+	float xyz = zapiszgre.ClockTime();
 	//Aktualne zdarzenia
 	switch (gameStage)
 	{
 	case stage::menu:
 		mainMenu.updateMenu(event,window);
 		StageControl(event,window, mainMenu,starship);
+		zapiszgre.clockZapis.restart();
 		break;
 	case stage::gra:
 		StageControl(event,window, mainMenu,starship);
@@ -306,10 +312,67 @@ void Game::updateEvent(Event& event, RenderWindow& window,MainMenu& mainMenu, St
 	case stage::ZapiszGre:
 		zapiszgre.uploadZapisz(event, window);
 		StageControl(event, window, mainMenu, starship);
+
+		if(xyz > 500)
+		{
+			zapiszgre.ClockRestart();
+			if((event.key.code == Keyboard::Enter) && (XxX == 0))
+			{
+				printf(" zapis 1\n");
+				zapiszgre.DownloadDataToSave(enemy.E1Hp, starship.SHp, starship.score, "data1.txt");
+			}
+			if ((event.key.code == Keyboard::Enter) && (XxX == 1))
+			{
+				printf(" zapis 2\n");
+				zapiszgre.DownloadDataToSave(enemy.E1Hp, starship.SHp, starship.score, "data2.txt");
+
+			}
+			if ((event.key.code == Keyboard::Enter) && (XxX == 2))
+			{
+				printf(" zapis 3\n");
+				zapiszgre.DownloadDataToSave(enemy.E1Hp, starship.SHp, starship.score, "data3.txt");
+
+			}
+			if ((event.key.code == Keyboard::Enter) && (XxX == 3))
+			{
+				printf(" zapis 4\n");
+				zapiszgre.DownloadDataToSave(enemy.E1Hp, starship.SHp, starship.score, "data4.txt");
+
+			}
+		}
 		break;
 	case stage::WczytajGre:
 		wczytajgre.uploadWczytaj(event, window);
 		StageControl(event, window, mainMenu, starship);
+
+		if (xyz > 500)
+		{
+			zapiszgre.ClockRestart();
+			if ((event.key.code == Keyboard::Enter) && (XXx == 0))
+			{
+				printf("Wczytano zapis 1\n");
+				wczytajgre.DownloadDataToGame( "data1.txt",starship,enemy);
+			}
+			if ((event.key.code == Keyboard::Enter) && (XXx == 1))
+			{
+				printf("Wczytano zapis 2\n");
+				wczytajgre.DownloadDataToGame("data2.txt", starship, enemy);
+
+			}
+			if ((event.key.code == Keyboard::Enter) && (XXx == 2))
+			{
+				printf("Wczytano zapis 3\n");
+				wczytajgre.DownloadDataToGame("data3.txt", starship, enemy);
+
+			}
+			if ((event.key.code == Keyboard::Enter) && (XXx == 3))
+			{
+				printf("Wczytano zapis 4\n");
+				wczytajgre.DownloadDataToGame("data4.txt", starship, enemy);
+
+			}
+		}
+
 		break;
 	case stage::TrudnoscGry:
 		StageControl(event, window, mainMenu, starship);
@@ -333,8 +396,9 @@ void Game::update(RenderWindow& window, MainMenu& mainMenu, Starship& starship, 
 	case stage::menu:
 		break;
 	case stage::gra:
-			SHp=MaxSHp - enemy.dmg;
-		updateStatistic();
+			starship.SHp=starship.MaxSHp - enemy.dmg;	
+			starship.score = enemy.DMGdealtToEnemy();
+		updateStatistic(starship);
 		pocisk.uploadPocisk();
 		if (enemy.ZeroEnemy() == 0)
 			gameStage = stage::Wygrana;
@@ -364,15 +428,15 @@ void Game::update(RenderWindow& window, MainMenu& mainMenu, Starship& starship, 
 	case stage::TrudnoscGry:
 		if (trudnosc.WybranypoziomTrudnosci() == 3)
 		{
-			MaxSHp = 1001;
+			starship.MaxSHp = 1001;
 		}
 		if (trudnosc.WybranypoziomTrudnosci() == 2)
 		{
-			MaxSHp = 701;
+			starship.MaxSHp = 701;
 		}
 		if (trudnosc.WybranypoziomTrudnosci() == 1)
 		{
-			MaxSHp = 301;
+			starship.MaxSHp = 301;
 		}
 		break;
 	case stage::opis:
