@@ -36,12 +36,34 @@ Wczytajgre::Wczytajgre()
 
 void Wczytajgre::DownloadDataToGame(string filename,Starship& starship,Enemy& enemy)
 {
+	
 	ifstream inFile;
 	inFile.open(filename);
-	for (int i = 0; i < 10; i++) {
-		inFile >> enemy.E1Hp[i];
+	int i = 1;
+	string line;
+	while (getline(inFile, line))
+	{
+		if (i == 1) enemy.E1Hp[0] = stoi(line);
+		else if (i == 2) enemy.E1Hp[1] = stoi(line);
+		else if (i == 3) enemy.E1Hp[2] = stoi(line);
+		else if (i == 4) enemy.E1Hp[3] = stoi(line);
+		else if (i == 5) enemy.E1Hp[4] = stoi(line);
+		else if (i == 6) enemy.E1Hp[5] = stoi(line);
+		else if (i == 7) enemy.E1Hp[6] = stoi(line);
+		else if (i == 8) enemy.E1Hp[7] = stoi(line);
+		else if (i == 9) enemy.E1Hp[8] = stoi(line);
+		else if (i == 10) enemy.E1Hp[9] = stoi(line);
+		else if (i == 11) starship.SHp = stoi(line);
+		else if (i == 12) starship.score = stoi(line);
+		i++;	
 	}
-	inFile >> starship.SHp >> starship.score;
+	for (int j = 0; j < 10; j++)
+	{
+		cout << enemy.E1Hp[j] << "\n";
+	}
+	cout << starship.SHp << "\n" << starship.score << "\n";
+	starship.MaxSHp = starship.SHp;
+	enemy.AllDMG = starship.score;
 	inFile.close();
 }
 

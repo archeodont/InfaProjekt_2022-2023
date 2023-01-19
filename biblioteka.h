@@ -9,6 +9,7 @@
 #include<sstream>
 #include<cstdlib>
 #include<cstdio>
+#include<stdio.h>
 
 
 #include<SFML/Graphics.hpp>

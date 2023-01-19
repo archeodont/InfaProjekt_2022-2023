@@ -54,12 +54,11 @@ void Zapiszgre::DownloadDataToSave(int EHp[10], int SSHp, int SSscore, string fi
 	outFile.open(filename);
 	for (int i = 0; i < 10; i++)
 	{
-		outFile << EHp[i] << "";
+		outFile << EHp[i] << "\n";
 	}
-	outFile << SSHp << "" << SSscore << endl;
+	outFile << SSHp << "\n" << SSscore << endl;
 	outFile.close();
 }
-
 
 
 void Zapiszgre::drawZapisz(RenderWindow& window)
